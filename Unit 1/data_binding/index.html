@@ -9,7 +9,15 @@
 	<p>Say something to the world <input type="text" ng-model="greeting" ng-init="greeting='Hello, '"></p>
 	<p>{{ greeting }} world!</p>
 	<h1>My name is: {{name}}</h1>
+	<h3>{{name}} loves {{pick}} <3</h3>
 	<input type="text" ng-model="name" placeholder="What is your name?">
+
+	<select ng-model="pick">
+	  <option value="Dogs">Dogs</option>
+	  <option value="Cats">Cats</option>
+	  <option value="Dogs and Cats">Dogs and Cats</option>
+	  <option value="Neither">Neither</option>
+	</select>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
 </body>
