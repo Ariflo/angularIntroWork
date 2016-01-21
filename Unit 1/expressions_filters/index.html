@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html ng-app>
+<html  >
 <head>
 	<meta charset="utf-8">
 	<title><title>{{ greeting }} World</title></title>
+
 </head>
-<body>
+<body ng-app='myapp'>
 	<p>{{1 + 6}}<p>
 	<p>Say something to the world <input type="text" ng-model="greeting" ng-init="greeting='Hello, '"></p>
 	<p>{{ greeting }} world!</p>
@@ -71,7 +72,53 @@
 	<h2>Subtotal:</h2>{{mealCost | currency}}
 	<br>
 	<h2>Tip:</h2>{{mealCost * (1+tip) | currency}}
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div ng-controller='myController'>
+			<label>Boy's Name</label><br>
+	<input type="text" ng-model="boysName"  placeholder="Boy's Name" ><br>	
+
+	<label>Adjective</label><br>
+	<input type="text" ng-model="adjective"  placeholder="Enter an adjective..." ><br>		
+
+	<label>Plural Noun</label><br>
+	<input type="text" ng-model="pn1"  placeholder="Enter a Plural Noun..." ><br>		
+
+	<label>Plural Noun</label><br>
+	<input type="text" ng-model="pn2"  placeholder="Enter a Plural Noun..." ><br>	
+
+	<label>An insect, Plural</label><br>
+	<input type="text" ng-model="insect"  placeholder="Ener an insect, plural" ><br>		
+
+	<label>Plural Noun</label><br>
+	<input type="text" ng-model="pn3"  placeholder="Enter a Plural Noun..." ><br>		
+
+	<label>A verb ending in "s"</label><br>
+	<input type="text" ng-model="pv"  placeholder="Enter a Verb ending in's'..." ><br><br>
+
+	<button type="submit" class="btn btn-warning btn-lg" ng-click='generate()' >Generate</button>
+
+
+	<h1>Mad with the Libs</h1>
+
+	<div ng-if='show'>
+		<h3>I'm in love with <span>{{boysName | uppercase}}</span>. He's so <span>{{adjective | uppercase}}</span>! He has big flat <span>{{pn1 | uppercase}}</span>, and when our <span>{{pn2 | uppercase}}</span> meet, I get <span>{{insect | uppercase}}</span> in my stomach. I've fallen for him like a ton of <span>{{pn3 | uppercase}}</span>, and he <span>{{pv | uppercase}}</span> for me, too. But I think he's got another girlfriend. What should I do?</h3>
+
+	</div>
+
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+<script type="text/javascript">
+	angular.module('myapp', []).controller('myController',function($scope){
+		$scope.show = false
+		$scope.generate = function(){
+			$scope.show = !$scope.show
+		}
+	})
+</script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </body>
 </html>
