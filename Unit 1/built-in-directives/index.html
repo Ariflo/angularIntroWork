@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html  >
+<head>
+	<meta charset="utf-8">
+	<title><title>{{ greeting }} World</title></title>
+
+</head>
+<body ng-app='myapp'>
+		<br>
+		<br>
+	<p>********************************************************************************</p>	
+
+	<strong><h1>First Anglular App, Intro</h1></strong>
+		<p>{{1 + 6}}<p>
+		<p>Say something to the world <input type="text" ng-model="greeting" ng-init="greeting='Hello, '"></p>
+		<p>{{ greeting }} world!</p>
+		<h3>My name is: {{name}}</h3>
+		<h3>{{name}} loves {{pick}} </h3>
+		<input type="text" ng-model="name" ng-init="name='BoJack'" placeholder="What is your name?">
+
+		<p>1 + 2 = {{1 + 2}}</p>
+		<p>My name is {{"BoJack" + " Horseman"}}</p>
+		<p>The array [99,43,22] is {{ [99,43,22].length }} items long.</p>
+
+		<select ng-model="pick">
+		  <option value="Dogs">Dogs</option>
+		  <option value="Cats">Cats</option>
+		  <option value="Dogs and Cats">Dogs and Cats</option>
+		  <option value="Neither">Neither</option>
+		</select>
+
+		<br>
+		<br>
+	<p>********************************************************************************</p>	
+
+	<strong><h1>Intro to Filters</h1></strong>
+		<br>
+		{{3.14159265359 | currency}}
+		<br>
+		{{3.14159265359 | number:3}}
+		<br>
+		{{3.14159265359 | number:6}}
+		<br>
+		{{3.14159265359 | number:1}}
+		<br>
+
+		<input type="text" ng-model="typeText"  placeholder="TypeText">
+		<p>All caps:</p><b>{{typeText | uppercase}}</b>
+		<p>All low caps:</p>{{typeText | lowercase}}
+
+		<br>
+		<br>
+
+		<p>How many digits of pie would you like?</p>
+		 <select ng-model="digit">
+		  <option value="1">1</option>
+		  <option value="2">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option>
+		  <option value="5">5</option>
+		  <option value="6">6</option>
+		  <option value="7">7</option>
+		</select>
+		<br>
+		<ng-pluralize count="digit" when="{ 
+		                     '1': 'Here you go! The first digit of pi', 
+		                     'other': '{{amount | number:2}} Here you go! The first {{digit}} digits of pi'}">
+		</ng-pluralize>
+		<br>
+
+		{{3.14159265359 | number: digit }}
+
+
+		<h3>Super Useful Tip Calculator</h3>
+		<p>How much did your meal cost?</p><input type="text" ng-model="mealCost"  placeholder="$35.78" >
+		<br>
+		<p>How much would you like to tip?</p>
+		 <select ng-model="tip">
+		  <option value=".10">10%</option>
+		  <option value=".20">20%</option>
+		  <option value=".30">30%</option>
+		</select>
+
+		<h2>Subtotal:</h2>{{mealCost | currency}}
+		<br>
+		<h2>Tip:</h2>{{mealCost * (1+tip) | currency}}
+
+	<h2>Subtotal:</h2>{{mealCost | currency}}
+	<br>
+	<h2>Tip:</h2>{{mealCost * (1+tip) | currency}}
+	
+	<br>
+	<br>
+
+	<div ng-controller='ExpressionsController'>
+			<label>Boy's Name</label><br>
+	<input type="text" ng-model="boysName"  placeholder="Boy's Name" ><br>	
+
+	<label>Adjective</label><br>
+	<input type="text" ng-model="adjective"  placeholder="Enter an adjective..." ><br>		
+
+	<label>Plural Noun</label><br>
+	<input type="text" ng-model="pn1"  placeholder="Enter a Plural Noun..." ><br>		
+
+	<label>Plural Noun</label><br>
+	<input type="text" ng-model="pn2"  placeholder="Enter a Plural Noun..." ><br>	
+
+	<label>An insect, Plural</label><br>
+	<input type="text" ng-model="insect"  placeholder="Ener an insect, plural" ><br>		
+
+	<label>Plural Noun</label><br>
+	<input type="text" ng-model="pn3"  placeholder="Enter a Plural Noun..." ><br>		
+
+	<label>A verb ending in "s"</label><br>
+	<input type="text" ng-model="pv"  placeholder="Enter a Verb ending in's'..." ><br><br>
+
+	<button type="submit" class="btn btn-warning btn-lg" ng-click='generate()' >Generate</button>
+
+
+	<h1>Mad with the Libs</h1>
+
+	<div ng-if='show'>
+		<h3>I'm in love with <span>{{boysName | uppercase}}</span>. He's so <span>{{adjective | uppercase}}</span>! He has big flat <span>{{pn1 | uppercase}}</span>, and when our <span>{{pn2 | uppercase}}</span> meet, I get <span>{{insect | uppercase}}</span> in my stomach. I've fallen for him like a ton of <span>{{pn3 | uppercase}}</span>, and he <span>{{pv | uppercase}}</span> for me, too. But I think he's got another girlfriend. What should I do?</h3>
+
+	</div>
+
+	</div>
+
+	<br>
+	<br>
+
+	<p>********************************************************************************</p>	
+
+	<strong><h1>Built in Directives Practice</h1></strong>
+
+	<div ng-controller='directivesControllers'>
+		<ul ng-repeat="name in names">
+		  <li >
+		    {{name}}
+		   </li>
+		</ul>
+
+	</div>
+
+
+
+
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+<script type="text/javascript">
+	angular.module('myapp', []).controller('ExpressionsController',function($scope){
+		$scope.show = false
+		$scope.generate = function(){
+			$scope.show = !$scope.show
+		}
+	}).controller('directivesControllers', function($scope){
+			$scope.names = ["Harry", "Ron", "Hermione", "Sirius", "Hedwig", "Tonks"];
+	})
+</script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</body>
+</html>
