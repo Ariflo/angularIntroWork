@@ -163,7 +163,35 @@
 		    {{symbols4}}
 		  
 		</ul>
+
+		<ul ng-repeat="attr in myObj">
+		  <li >
+		  	{{attr}}
+		   </li>
+		</ul>
 	</div>
+
+	<div ng-show="3 + 4 == 5">
+	  3 + 4 isn't 5, don't show
+	</div>
+
+	<div ng-show="3 + 4 == 7">
+	  3 + 4 is 7, do show
+	</div>
+
+	<div ng-hide="3 + 4 == 5">
+	    3 + 4 isn't 5, don't hide
+	</div>
+
+	<div ng-hide="3 + 4 == 7">
+	  3 + 4 is 7, do hide
+	</div>
+
+	<h2>Sign-Up Page</h2>
+	<input id="password" type="password" ng-model="passwordInput">
+	<p>Your password is {{passwordInput.length}} characters</p>
+	<input id="submitBtn" class="btn btn-md btn-default" ng-show="passwordInput.length > 6" ng-hide="passwordInput.length < 6" value="submit">
+	<p id="passwordFail" ng-show="passwordInput.length < 6" ng-hide="passwordInput.length > 6">Your Password in invalid!</p>
 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
@@ -179,6 +207,12 @@
 			$scope.symbols2 = $sce.trustAsHtml("<li>&clubs;</li>");
 			$scope.symbols3 = $sce.trustAsHtml("<li>&hearts;</li>");
 			$scope.symbols4 = $sce.trustAsHtml("<li>&diams;</li>");
+
+			$scope.myObj = {
+				name: 'Ari',
+				occupation: 'developer',
+				hometown: 'New York'
+			}
 	})
 </script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
