@@ -134,7 +134,7 @@
 	<strong><h1>Built in Directives Practice</h1></strong>
 
 	<div ng-controller='directivesControllers'>
-		<ul ng-repeat="name in names">
+		<ul ng-repeat="name in names track by $index">
 		  <li >
 		    {{name}}
 		   </li>
@@ -174,7 +174,7 @@
 			$scope.show = !$scope.show
 		}
 	}).controller('directivesControllers', function($scope, $sce){
-			$scope.names = ["Harry", "Ron", "Hermione", "Sirius", "Hedwig", "Tonks"];
+			$scope.names = ["Harry", "Ron", "Hermione", "Sirius", "Hedwig", "Tonks", "Tonks", "Tonks"];
 			$scope.symbols = $sce.trustAsHtml("<li>&spades;</li>"); 
 			$scope.symbols2 = $sce.trustAsHtml("<li>&clubs;</li>");
 			$scope.symbols3 = $sce.trustAsHtml("<li>&hearts;</li>");
