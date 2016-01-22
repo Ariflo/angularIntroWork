@@ -188,10 +188,13 @@
 	</div>
 
 	<h2>Sign-Up Page</h2>
-	<input id="password" type="password" ng-model="passwordInput">
-	<p>Your password is {{passwordInput.length}} characters</p>
+	<input id="password" type="password" ng-model="passwordInput" ng-class="{red: passwordInput.length < 6, green: passwordInput.length >= 6}">
+	<p  ng-class="{red: passwordInput.length < 6, green: passwordInput.length >= 6}">Your password is {{passwordInput.length}} characters</p>
 	<input id="submitBtn" class="btn btn-md btn-default" ng-show="passwordInput.length > 6" ng-hide="passwordInput.length < 6" value="submit">
 	<p id="passwordFail" ng-show="passwordInput.length < 6" ng-hide="passwordInput.length > 6">Your Password in invalid!</p>
+
+	<div ng-class="{highlight: 4 + 4 == 8}"> 4 + 4 = 8</div>
+	<div ng-class="{highlight: 4 + 4 == 10}">4 + 4 = 10</div>
 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
@@ -216,5 +219,7 @@
 	})
 </script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+
 </body>
 </html>
