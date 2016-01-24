@@ -240,15 +240,22 @@
 	<strong><h1>Scope</h1></strong>
 
 	<div ng-app="myApp">
-	    <div>
-	      <input type="text" ng-model="data">
-	      {{data}}
-	    </div>
-	    <div ng-controller="ScopeController">
-	      <input type="text" ng-model="data">
-	      {{data}}
-	    </div>
+	  <div>
+	    <input type="text" ng-model="view.info">
+	    {{view.info}}
 	  </div>
+	  <div ng-controller="ScopeController">
+	    <input type="text" ng-model="view.info">
+	    {{view.info}}
+	  </div>
+	</div>
+
+	<div ng-controller="MainController">
+	   {{view.message}}
+	   <div ng-if="number === 42">
+	       Secret Message: <input type="text" ng-model="view.message">
+	   </div>
+	 </div>
 
 
 
@@ -309,7 +316,13 @@
 		$scope.rightNow =  today; 
 
 
-	}).controller("ScopeController", function($scope){});
+	}).controller("ScopeController", function($rootScope){
+		$rootScope.view = {}
+
+	}).controller('MainController', function($scope) {
+		$scope.view = {};
+ 	 	$scope.number = 42;
+	});
 </script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="style.css">
