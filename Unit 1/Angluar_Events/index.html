@@ -341,7 +341,17 @@
 				 	</tr>
 				</table>
 
+				<h3>The div was entered {{enterCount}} times</h3>
+				<div class="divbox" ng-mouseenter="enterCount = enterCount + 1">
+				</div>
+
+				<h3>Random Color Generator</h3>
+				<div class="divbox" ng-style="myStyle" ng-mouseenter="myStyle={'background-color':randomColor()}">
+				</div>
+
 		 	</div>
+
+
 	 </div>
 
 
@@ -462,6 +472,19 @@
 				$scope.contact.push({"name":$scope.contact.name, "email":$scope.contact.email, "phone":$scope.contact.phone});
 			};
 		}
+
+		$scope.enterCount = 0;
+
+		$scope.randomColor=function (){
+		    var x=Math.round(0xffffff * Math.random()).toString(16);
+		    var y=(6-x.length);
+		    var z="000000";
+		    var z1 = z.substring(0,y);
+		    var color = "#" + z1 + x;
+		    return color;
+		  }
+
+
 	});
 </script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
