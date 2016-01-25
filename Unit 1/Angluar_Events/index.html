@@ -307,6 +307,39 @@
 		 	<div class='resetBtn' >
 		 	<button ng-click="reset()">Reset</button>
 		 	</div>
+
+		 	<div class="col-md-4">
+			 	<h3>Contacts App</h3>
+			 	<form name="contactForm" ng-submit="submitForm(contactForm)"> 
+				 	<div class="form-group">
+				 	    <label for="name">Name</label>
+		    			    <input type="text" name="name" class="form-control" id="name" placeholder="Name">		 	    
+
+		    			    <label for="email">Email</label>
+		    			    <input type="email" name="email" class="form-control" id="email" placeholder="email">		 	
+
+		    			    <label for="phone">Phone</label>
+		    			    <input type="phone" name="phone"  class="form-control" id="phone" placeholder="phone">
+
+		    			    <input type="submit" class="btn btn-success"  value="Add Contact">
+				 	</div>
+			 	</form>
+
+			 	<table class="table">
+				 	<tr>
+				 	   <th scope="col">Name</th>
+				 	   <th scope="col">Email</th>
+				 	   <th scope="col">Phone</th>
+				 	 </tr>
+
+				 	 <tr>
+				 	    <td>{{contact.name}}</td>
+				 	    <td>{{contact.email}}</td>
+				 	    <td>{{contact.phone}}</td>
+				 	 </tr>
+				</table>
+
+		 	</div>
 	 </div>
 
 
@@ -418,6 +451,14 @@
 			$scope.score1 = 0;
 			$scope.score2 = 0;
 			delete $scope.turn;
+		}
+
+		$scope.contact = {};
+
+		$scope.submitForm=function(contactForm){
+			$scope.contact.name = contactForm.name; 
+			$scope.contact.email = contactForm.email;
+			$scope.contact.phone = contactForm.phone;
 		}
 	});
 </script>
