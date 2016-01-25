@@ -313,17 +313,19 @@
 			 	<form name="contactForm" ng-submit="submitForm(contactForm)"> 
 				 	<div class="form-group">
 				 	    <label for="name">Name</label>
-		    			    <input type="text" name="name" class="form-control" id="name" placeholder="Name">		 	    
+		    			    <input ng-model='contact.name' type="text" name="name" class="form-control" id="name" placeholder="Name" required>		 	    
 
 		    			    <label for="email">Email</label>
-		    			    <input type="email" name="email" class="form-control" id="email" placeholder="email">		 	
+		    			    <input  ng-model='contact.email' type="email" name="email" class="form-control" id="email" placeholder="email">		 	
 
 		    			    <label for="phone">Phone</label>
-		    			    <input type="phone" name="phone"  class="form-control" id="phone" placeholder="phone">
+		    			    <input ng-model='contact.phone' type="phone" name="phone"  class="form-control" id="phone" placeholder="phone">
 
 		    			    <input type="submit" class="btn btn-success"  value="Add Contact">
 				 	</div>
 			 	</form>
+
+			 	<label>Search: <input ng-model="searchText"></label>
 
 			 	<table class="table">
 				 	<tr>
@@ -332,11 +334,11 @@
 				 	   <th scope="col">Phone</th>
 				 	 </tr>
 
-				 	 <tr>
-				 	    <td>{{contact.name}}</td>
-				 	    <td>{{contact.email}}</td>
-				 	    <td>{{contact.phone}}</td>
-				 	 </tr>
+				 	 <tr ng-repeat = "contacts in contact | filter:searchText">
+				 	    <td>{{contacts.name}}</td>
+				 	    <td>{{contacts.email}}</td>
+				 	    <td>{{contacts.phone}}</td>
+				 	</tr>
 				</table>
 
 		 	</div>
@@ -453,12 +455,12 @@
 			delete $scope.turn;
 		}
 
-		$scope.contact = {};
+		$scope.contact = [];
 
-		$scope.submitForm=function(contactForm){
-			$scope.contact.name = contactForm.name; 
-			$scope.contact.email = contactForm.email;
-			$scope.contact.phone = contactForm.phone;
+		$scope.submitForm= function(contactForm){
+			if (contactForm.$valid) {
+				$scope.contact.push({"name":$scope.contact.name, "email":$scope.contact.email, "phone":$scope.contact.phone});
+			};
 		}
 	});
 </script>
