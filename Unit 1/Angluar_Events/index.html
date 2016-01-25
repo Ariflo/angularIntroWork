@@ -269,6 +269,46 @@
 	 </div>
 	 </div>
 
+	 <p>********************************************************************************</p>	
+
+	 <strong><h1>Anglular Events</h1></strong>
+
+	 <div ng-controller="eventController">
+	 	<h3>The number is: {{number}}</h3>
+	 	<button ng-click="pickRandomNumber()">Pick Random Number</button>
+
+	 	<br>
+	 	<br>
+
+	 	<h3>Word Reverser</h3>
+	 	<input ng-model="string">
+	 	<p>Your word is {{string}}</p>
+	 	<button ng-click="reverseString()">Reverse</button>	 	
+
+	 	<h3>Ping Pong Score Keeper</h3>
+	 	
+		 	<div class="ppField" ng-class="{greenBkgrnd: score1 >= 11, redBkgrnd: score2 >= 11}" ng-click="upTickScore1()">
+		 		<h3>Player 1</h3>
+		 		{{score1}}
+		 		<br>
+		 		<span ng-if="turn === true">Serving</span>
+		 		<p>Games won: {{wins}}</p>
+		 	</div>
+		 	<div class="ppField" ng-class="{greenBkgrnd: score2 >= 11, redBkgrnd: score1 >= 11}" ng-click="upTickScore2()">
+		 		<h3>Player 2</h3>
+		 		{{score2}}
+		 		<br>
+		 		<span ng-if="turn === false">Serving</span>
+		 		<p>Games won: {{wins2}}</p>
+		 	</div>
+
+		 	<br>
+
+		 	<div class='resetBtn' >
+		 	<button ng-click="reset()">Reset</button>
+		 	</div>
+	 </div>
+
 
 
 
@@ -338,6 +378,47 @@
 
 	}).controller('childController', function($scope) {
 
+	}).controller('eventController', function($scope) {
+		$scope.number = 5;
+		$scope.pickRandomNumber = function(){
+			$scope.number = Math.floor(Math.random() * 10) + 1
+		};
+
+		$scope.string = "hello";
+		$scope.reverseString = function (){
+			$scope.string = $scope.string.split('').reverse().join(''); 
+		}
+
+		$scope.score1 = 0;
+		$scope.score2 = 0;
+		$scope.wins = 0
+		$scope.wins2 = 0
+		$scope.upTickScore1=function(){
+				$scope.score1 +=1; 
+
+			if($scope.score1 % 2 === 0){
+				$scope.turn = false;
+
+			}else if($scope.score1 === 11){
+				$scope.wins +=1; 
+			}
+		}
+
+		$scope.upTickScore2=function(){
+			$scope.score2 +=1; 
+			if($scope.score1 % 2 === 0){
+				$scope.turn = true;
+
+			}else if($scope.score2 === 11){
+				$scope.wins2 +=1; 
+			}
+		}
+
+		$scope.reset=function(){
+			$scope.score1 = 0;
+			$scope.score2 = 0;
+			delete $scope.turn;
+		}
 	});
 </script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">

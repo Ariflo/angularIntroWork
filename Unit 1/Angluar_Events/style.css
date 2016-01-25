@@ -23,3 +23,26 @@ img{
 	width:10%;
 	height:10%;
 }
+
+.ppField{
+	float: left;
+	display: inline;
+	margin: 2%;
+	background-color: #0A79C7; 
+	height: 20%;
+	width: 10%;
+	color: white;
+	text-align: center;
+}
+
+.resetBtn{
+	clear: both;
+}
+
+.greenBkgrnd{
+	background-color: green;
+}
+
+.redBkgrnd{
+	background-color: red;
+}
