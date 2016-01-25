@@ -1,0 +1,25 @@
+.highlight {
+  background-color: yellow;
+}
+
+.red{
+	color: red;
+}
+
+.green{
+	color: green;
+}
+
+.yellow{
+	color: orange;
+}
+
+.yellow:after{
+	color: orange;
+	content:" ON SALE!!!!";
+}
+
+img{
+	width:10%;
+	height:10%;
+}
