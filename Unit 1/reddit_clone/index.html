@@ -62,15 +62,20 @@
 
 	<div class="container" ng-if="show" ng-repeat = "post in posts | filter:searchText | orderBy: currentOrderBy">
 		<div class="row">
-			<img class = "col-md-2" src="{{post.image}}">
-			 <div class="titleThumb">
-			 <strong>{{post.title}}  |  </strong><span ng-click="ratingUp(post)" id="thumbs-up" class="glyphicon glyphicon-thumbs-up"></span><span  ng-click="ratingDown(post)" id="thumbs-down" class="glyphicon glyphicon-thumbs-down"></span>{{post.rating}}
-			 </div>
-			<h6 class="text-right">by {{post.author}}</h6>
-			<p class="">{{post.comment}}</p>
-			<p><span class="glyphicon glyphicon-calendar"></span> {{post.date | date:'EEEE, MMMM d, y'}}
-			| <span class="glyphicon glyphicon-comment"></span>
-			| <span ng-click=""> <span class="glyphicon glyphicon-pencil"></span> New Comment</span></p>
+			<div>
+				<img class = "col-xs-2" src="{{post.image}}">
+			</div>
+			
+			<div class="col-xs-10">
+				 <div class="titleThumb">
+				 <strong>{{post.title}}  |  </strong><span ng-click="ratingUp()" id="thumbs-up" class="glyphicon glyphicon-thumbs-up"></span><span  ng-click="ratingDown()" id="thumbs-down" class="glyphicon glyphicon-thumbs-down"></span>{{number}}
+				 </div>
+				<h6 class="text-right">by {{post.author}}</h6>
+				<p class="">{{post.comment}}</p>
+				<p><span class="glyphicon glyphicon-calendar"></span> {{post.date | date:'EEEE, MMMM d, y'}}
+				| <span class="glyphicon glyphicon-comment"></span>
+				| <span ng-click=""> <span class="glyphicon glyphicon-pencil"></span> New Comment</span></p>
+			</div>
 		</div>
 
 	</div>
