@@ -349,6 +349,10 @@
 				<div class="divbox" ng-style="myStyle" ng-mouseenter="myStyle={'background-color':randomColor()}">
 				</div>
 
+				<div class='resetBtn' >
+			 	<button ng-click="myStyle={'background-color':'replay()'}">Replay Colors</button>
+			 	</div>
+
 		 	</div>
 
 
@@ -423,7 +427,7 @@
 
 	}).controller('childController', function($scope) {
 
-	}).controller('eventController', function($scope) {
+	}).controller('eventController', function($scope, $timeout) {
 		$scope.number = 5;
 		$scope.pickRandomNumber = function(){
 			$scope.number = Math.floor(Math.random() * 10) + 1
@@ -474,6 +478,7 @@
 		}
 
 		$scope.enterCount = 0;
+		$scope.colorStore =[];
 
 		$scope.randomColor=function (){
 		    var x=Math.round(0xffffff * Math.random()).toString(16);
@@ -481,8 +486,34 @@
 		    var z="000000";
 		    var z1 = z.substring(0,y);
 		    var color = "#" + z1 + x;
+		    $scope.colorStore.push(color);
 		    return color;
 		  }
+
+		  var replaying = false;
+
+		$scope.replay = function() {
+
+			var displayPrevColor = function() {
+				if(replaying){
+					for(var i = 0; i < $scope.colorStore.length; i++){
+						return $scope.colorStore[i];	     	
+					} 
+					replaying = false;
+				}else{
+					$timeout(displayPrevColor, 1000);
+				}    
+			};
+			
+			if (!replaying) {
+			    replaying = true;
+			    // This timeout starts the timeout loop
+			    $timeout(function() { displayPrevColor(); }, 500);
+			}
+
+			return displayPrevColor;
+		    
+		};
 
 
 	});
