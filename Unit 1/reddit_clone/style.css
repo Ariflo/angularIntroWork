@@ -16,3 +16,11 @@
 .postComment{
 	float:left;
 }
+
+.titleThumb{
+	display:inline;
+}
+
+#thumbs-up, #thumbs-down{
+	margin: .5%;
+}
