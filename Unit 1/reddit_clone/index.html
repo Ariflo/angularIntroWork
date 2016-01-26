@@ -31,7 +31,11 @@
       </form>
       <ul class="nav navbar-nav">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+        	<select  ng-model="currentOrderBy" ng-click='ratingClicked()'>
+        		<option value="-title">Sort by Votes</option>
+        		<option >Sort by Date</option>
+        		<option value="-title">Sort by Title</option>
+        	</select>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -57,25 +61,21 @@
 	</form>
 
 
-	<div class="container" ng-if="show" ng-repeat = "post in posts | filter:searchText">
+	<div class="container" ng-if="show" ng-repeat = "post in posts | filter:searchText | orderBy: '-currentOrderBy'">
 		<div class="row">
-			<div class="col-xs-2">
-				<img class="ico" src="{{post.image}}">
-			</div>
-			<div class="col-xs-10">
-				<h3 class="">{{post.title}}</h3>
-				<h6 class="text-right">by {{post.author}}</h6>
-				<p class="">{{post.comment}}</p>
-				<p> 
-					<span class="glyphicon glyphicon-calendar"></span> {{post.date | date:'EEEE, MMMM d, y'}}
-					 | <span class="glyphicon glyphicon-comment"></span>
-					 | <span ng-click=""> <span class="glyphicon glyphicon-pencil"></span> New Comment</span></p> 
-			</div>
-			<div>
-				
-			</div>
+			<img class = "col-md-2" src="{{post.image}}">
+			 <div class="titleThumb">
+			 <strong>{{post.title}}  |  </strong><span ng-click="ratingUp()" id="thumbs-up" class="glyphicon glyphicon-thumbs-up"></span><span  ng-click="ratingDown()" id="thumbs-down" class="glyphicon glyphicon-thumbs-down"></span>{{number}}
+			 </div>
+			<h6 class="text-right">by {{post.author}}</h6>
+			<p class="">{{post.comment}}</p>
+			<p><span class="glyphicon glyphicon-calendar"></span> {{post.date | date:'EEEE, MMMM d, y'}}
+			| <span class="glyphicon glyphicon-comment"></span>
+			| <span ng-click=""> <span class="glyphicon glyphicon-pencil"></span> New Comment</span></p>
 		</div>
+
 	</div>
+
 
 </div>
 

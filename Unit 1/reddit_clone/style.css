@@ -33,3 +33,11 @@ body > div > form > div {
 	height: 100px;
 	width: 100px;
 }
+
+.titleThumb{
+	display:inline;
+}
+
+#thumbs-up, #thumbs-down{
+	margin: .5%;
+}
