@@ -7,9 +7,11 @@ angular.module('myApp', ['ngAnimate']).controller('firstController',function($sc
 	$scope.postSubmit = function(form){
 		$scope.show = true;
 		if (form.$valid) {
-			$scope.posts.push({"title": $scope.newPostData.title, "author": $scope.newPostData.author, "image": $scope.newPostData.image, "comment": $scope.newPostData.comment});
+			$scope.posts.push({"title": $scope.newPostData.title, "author": $scope.newPostData.author, "image": $scope.newPostData.image, "comment": $scope.newPostData.comment, "date": new Date(), });
 
 		};
 		$scope.newPostData = {};
 	}
+
+	$scope.toggleComment;
 });
