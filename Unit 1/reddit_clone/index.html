@@ -25,15 +25,14 @@
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" class="form-control"  ng-model="searchText" placeholder="Search">
         </div>
-        <button type="submit" class="btn btn-default">Search</button>
       </form>
       <ul class="nav navbar-nav">
         <li class="dropdown">
-        	<select  ng-model="currentOrderBy" ng-click='ratingClicked()'>
-        		<option value="-title">Sort by Votes</option>
-        		<option >Sort by Date</option>
+        	<select  ng-model="currentOrderBy">
+        		<option value="-rating">Sort by Votes</option>
+        		<option  value="-date">Sort by Date</option>
         		<option value="-title">Sort by Title</option>
         	</select>
         </li>
@@ -61,11 +60,11 @@
 	</form>
 
 
-	<div class="container" ng-if="show" ng-repeat = "post in posts | filter:searchText | orderBy: '-currentOrderBy'">
+	<div class="container" ng-if="show" ng-repeat = "post in posts | filter:searchText | orderBy: currentOrderBy">
 		<div class="row">
 			<img class = "col-md-2" src="{{post.image}}">
 			 <div class="titleThumb">
-			 <strong>{{post.title}}  |  </strong><span ng-click="ratingUp()" id="thumbs-up" class="glyphicon glyphicon-thumbs-up"></span><span  ng-click="ratingDown()" id="thumbs-down" class="glyphicon glyphicon-thumbs-down"></span>{{number}}
+			 <strong>{{post.title}}  |  </strong><span ng-click="ratingUp(post)" id="thumbs-up" class="glyphicon glyphicon-thumbs-up"></span><span  ng-click="ratingDown(post)" id="thumbs-down" class="glyphicon glyphicon-thumbs-down"></span>{{post.rating}}
 			 </div>
 			<h6 class="text-right">by {{post.author}}</h6>
 			<p class="">{{post.comment}}</p>
