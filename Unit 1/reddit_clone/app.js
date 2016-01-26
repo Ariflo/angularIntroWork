@@ -35,10 +35,5 @@ angular.module('myApp', ['ngAnimate']).controller('firstController',function($sc
 	$scope.titleClicked = function(){
 		$scope.rating = !$scope.rating
 	}
-
-
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> 05aad0fb911738736216a6d5e8beec8d258e2c01
+
