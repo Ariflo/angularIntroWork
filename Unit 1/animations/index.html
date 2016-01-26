@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html  >
+<head>
+	<meta charset="utf-8">
+	<title><title>{{ greeting }} World</title></title>
+
+</head>
+<body ng-app='myapp'>
+		<br>
+		<br>
+	<p>********************************************************************************</p>	
+
+	<strong><h1>First Anglular App, Intro</h1></strong>
+		<p>{{1 + 6}}<p>
+		<p>Say something to the world <input type="text" ng-model="greeting" ng-init="greeting='Hello, '"></p>
+		<p>{{ greeting }} world!</p>
+		<h3>My name is: {{name}}</h3>
+		<h3>{{name}} loves {{pick}} </h3>
+		<input type="text" ng-model="name" ng-init="name='BoJack'" placeholder="What is your name?">
+
+		<p>1 + 2 = {{1 + 2}}</p>
+		<p>My name is {{"BoJack" + " Horseman"}}</p>
+		<p>The array [99,43,22] is {{ [99,43,22].length }} items long.</p>
+
+		<select ng-model="pick">
+		  <option value="Dogs">Dogs</option>
+		  <option value="Cats">Cats</option>
+		  <option value="Dogs and Cats">Dogs and Cats</option>
+		  <option value="Neither">Neither</option>
+		</select>
+
+		<br>
+		<br>
+	<p>********************************************************************************</p>	
+
+	<strong><h1>Intro to Filters</h1></strong>
+		<br>
+		{{3.14159265359 | currency}}
+		<br>
+		{{3.14159265359 | number:3}}
+		<br>
+		{{3.14159265359 | number:6}}
+		<br>
+		{{3.14159265359 | number:1}}
+		<br>
+
+		<input type="text" ng-model="typeText"  placeholder="TypeText">
+		<p>All caps:</p><b>{{typeText | uppercase}}</b>
+		<p>All low caps:</p>{{typeText | lowercase}}
+
+		<br>
+		<br>
+
+		<p>How many digits of pie would you like?</p>
+		 <select ng-model="digit">
+		  <option value="1">1</option>
+		  <option value="2">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option>
+		  <option value="5">5</option>
+		  <option value="6">6</option>
+		  <option value="7">7</option>
+		</select>
+		<br>
+		<ng-pluralize count="digit" when="{ 
+		                     '1': 'Here you go! The first digit of pi', 
+		                     'other': '{{amount | number:2}} Here you go! The first {{digit}} digits of pi'}">
+		</ng-pluralize>
+		<br>
+
+		{{3.14159265359 | number: digit }}
+
+
+		<h3>Super Useful Tip Calculator</h3>
+		<p>How much did your meal cost?</p><input type="text" ng-model="mealCost"  placeholder="$35.78" >
+		<br>
+		<p>How much would you like to tip?</p>
+		 <select ng-model="tip">
+		  <option value=".10">10%</option>
+		  <option value=".20">20%</option>
+		  <option value=".30">30%</option>
+		</select>
+
+		<h2>Subtotal:</h2>{{mealCost | currency}}
+		<br>
+		<h2>Tip:</h2>{{mealCost * (1+tip) | currency}}
+
+	<h2>Subtotal:</h2>{{mealCost | currency}}
+	<br>
+	<h2>Tip:</h2>{{mealCost * (1+tip) | currency}}
+	
+	<br>
+	<br>
+
+	<div ng-controller='ExpressionsController'>
+			<label>Boy's Name</label><br>
+	<input type="text" ng-model="boysName"  placeholder="Boy's Name" ><br>	
+
+	<label>Adjective</label><br>
+	<input type="text" ng-model="adjective"  placeholder="Enter an adjective..." ><br>		
+
+	<label>Plural Noun</label><br>
+	<input type="text" ng-model="pn1"  placeholder="Enter a Plural Noun..." ><br>		
+
+	<label>Plural Noun</label><br>
+	<input type="text" ng-model="pn2"  placeholder="Enter a Plural Noun..." ><br>	
+
+	<label>An insect, Plural</label><br>
+	<input type="text" ng-model="insect"  placeholder="Ener an insect, plural" ><br>		
+
+	<label>Plural Noun</label><br>
+	<input type="text" ng-model="pn3"  placeholder="Enter a Plural Noun..." ><br>		
+
+	<label>A verb ending in "s"</label><br>
+	<input type="text" ng-model="pv"  placeholder="Enter a Verb ending in's'..." ><br><br>
+
+	<button type="submit" class="btn btn-warning btn-lg" ng-click='generate()' >Generate</button>
+
+
+	<h1>Mad with the Libs</h1>
+
+	<div ng-if='show'>
+		<h3>I'm in love with <span>{{boysName | uppercase}}</span>. He's so <span>{{adjective | uppercase}}</span>! He has big flat <span>{{pn1 | uppercase}}</span>, and when our <span>{{pn2 | uppercase}}</span> meet, I get <span>{{insect | uppercase}}</span> in my stomach. I've fallen for him like a ton of <span>{{pn3 | uppercase}}</span>, and he <span>{{pv | uppercase}}</span> for me, too. But I think he's got another girlfriend. What should I do?</h3>
+
+	</div>
+
+	</div>
+
+	<br>
+	<br>
+
+	<p>********************************************************************************</p>	
+
+	<strong><h1>Built in Directives Practice</h1></strong>
+
+	<div ng-controller='directivesControllers'>
+		<ul ng-repeat="name in names track by $index">
+		  <li >
+		    {{name}}
+		   </li>
+		</ul>	
+
+		<ul  ng-bind-html="symbols">
+		
+		    {{symbols}}
+		  
+		</ul>		
+
+		<ul  ng-bind-html="symbols2">
+		
+		    {{symbols2}}
+		  
+		</ul>		
+
+		<ul  ng-bind-html="symbols3">
+		
+		    {{symbols3}}
+		   
+		</ul>		
+
+		<ul  ng-bind-html="symbols4">
+		  
+		    {{symbols4}}
+		  
+		</ul>
+
+		<ul ng-repeat="attr in myObj">
+		  <li >
+		  	{{attr}}
+		   </li>
+		</ul>
+	
+
+	<div ng-show="3 + 4 == 5">
+	  3 + 4 isn't 5, don't show
+	</div>
+
+	<div ng-show="3 + 4 == 7">
+	  3 + 4 is 7, do show
+	</div>
+
+	<div ng-hide="3 + 4 == 5">
+	    3 + 4 isn't 5, don't hide
+	</div>
+
+	<div ng-hide="3 + 4 == 7">
+	  3 + 4 is 7, do hide
+	</div>
+
+	<h2>Sign-Up Page</h2>
+	<input id="password" type="password" ng-model="passwordInput" ng-class="{red: passwordInput.length < 6, green: passwordInput.length >= 6}">
+	<p  ng-class="{red: passwordInput.length < 6, green: passwordInput.length >= 6}">Your password is {{passwordInput.length}} characters</p>
+	<input id="submitBtn" class="btn btn-md btn-default" ng-show="passwordInput.length > 6" ng-hide="passwordInput.length < 6" value="submit">
+	<p id="passwordFail" ng-show="passwordInput.length < 6" ng-hide="passwordInput.length > 6">Your Password in invalid!</p>
+
+	<div ng-class="{highlight: 4 + 4 == 8}"> 4 + 4 = 8</div>
+	<div ng-class="{highlight: 4 + 4 == 10}">4 + 4 = 10</div>
+
+	<h1>Camera Shop</h1>
+	<select ng-click='ratingClicked()'>
+		<option ng-click='priceClicked()'>Price</option>
+		<option ng-click='ratingClicked()'>Rating</option>
+		
+	</select>
+	<div ng-repeat-start="cam in cams | orderBy: '-price'" ng-hide="rating">
+		<h3>{{cam.title}}</h3>
+		<p ng-class="{yellow: cam.onSale}">Price: {{cam.price | currency}}</p>
+		<p>{{cam.rating}}</p>
+		<img ng-src= "{{cam.image}}" alt="cam pic">
+
+	</div>
+	 <hr ng-repeat-end>
+
+	 <div ng-repeat-start="cam in cams | orderBy: '-rating'" ng-show='rating'>
+		<h3>{{cam.title}}</h3>
+		<p ng-class="{yellow: cam.onSale}">{{cam.price | currency}}</p>
+		<p>{{cam.rating}}</p>
+		<img ng-src= "{{cam.image}}" alt="cam pic">
+
+	</div>
+	 <hr ng-repeat-end>
+
+	</div>
+
+	<p>********************************************************************************</p>	
+
+	<strong><h1>Intro to Controllers</h1></strong>
+
+	<div ng-controller="ExercisesController">
+		<h3>My favorite color is: {{FavColor}}</h3>
+		<h3>There are {{secondsInACentury | number}} seconds in a Century!</h3>
+		<h3>Today is {{rightNow | date}} </h3>
+
+
+	</div>
+
+
+	<p>********************************************************************************</p>	
+
+	<strong><h1>Scope</h1></strong>
+
+	<div ng-app="myApp">
+	  <div>
+	    <input type="text" ng-model="view.info">
+	    {{view.info}}
+	  </div>
+	  <div ng-controller="ScopeController">
+	    <input type="text" ng-model="view.info">
+	    {{view.info}}
+	  </div>
+	
+
+	<div ng-controller="MainController">
+	   {{view.message}}
+	   <div ng-if="number === 42">
+	       Secret Message: <input type="text" ng-model="view.message">
+	   </div>
+	 </div>
+
+	 <div ng-controller="parentController">
+	 
+	 </div>
+	 <div ng-controller="childController">
+	     <ul>
+	     	<li ng-repeat="messages in message">
+	            	<input ng-model="messages.mes">
+	        	 </li>
+	     <ul>
+	 </div>
+	 </div>
+
+	 <p>********************************************************************************</p>	
+
+	 <strong><h1>Anglular Events</h1></strong>
+
+	 <div ng-controller="eventController">
+	 	<h3>The number is: {{number}}</h3>
+	 	<button ng-click="pickRandomNumber()">Pick Random Number</button>
+
+	 	<br>
+	 	<br>
+
+	 	<h3>Word Reverser</h3>
+	 	<input ng-model="string">
+	 	<p>Your word is {{string}}</p>
+	 	<button ng-click="reverseString()">Reverse</button>	 	
+
+	 	<h3>Ping Pong Score Keeper</h3>
+	 	
+		 	<div class="ppField" ng-class="{greenBkgrnd: score1 >= 11, redBkgrnd: score2 >= 11}" ng-click="upTickScore1()">
+		 		<h3>Player 1</h3>
+		 		{{score1}}
+		 		<br>
+		 		<span ng-if="turn === true">Serving</span>
+		 		<p>Games won: {{wins}}</p>
+		 	</div>
+		 	<div class="ppField" ng-class="{greenBkgrnd: score2 >= 11, redBkgrnd: score1 >= 11}" ng-click="upTickScore2()">
+		 		<h3>Player 2</h3>
+		 		{{score2}}
+		 		<br>
+		 		<span ng-if="turn === false">Serving</span>
+		 		<p>Games won: {{wins2}}</p>
+		 	</div>
+
+		 	<br>
+
+		 	<div class='resetBtn' >
+		 	<button ng-click="reset()">Reset</button>
+		 	</div>
+
+		 	<div class="col-md-4">
+			 	<h3>Contacts App</h3>
+			 	<form name="contactForm" ng-submit="submitForm(contactForm)"> 
+				 	<div class="form-group">
+				 	    <label for="name">Name</label>
+		    			    <input ng-model='contact.name' type="text" name="name" class="form-control" id="name" placeholder="Name" required>		 	    
+
+		    			    <label for="email">Email</label>
+		    			    <input  ng-model='contact.email' type="email" name="email" class="form-control" id="email" placeholder="email">		 	
+
+		    			    <label for="phone">Phone</label>
+		    			    <input ng-model='contact.phone' type="phone" name="phone"  class="form-control" id="phone" placeholder="phone">
+
+		    			    <input type="submit" class="btn btn-success"  value="Add Contact">
+				 	</div>
+			 	</form>
+
+			 	<label>Search: <input ng-model="searchText"></label>
+
+			 	<table class="table">
+				 	<tr>
+				 	   <th scope="col">Name</th>
+				 	   <th scope="col">Email</th>
+				 	   <th scope="col">Phone</th>
+				 	 </tr>
+
+				 	 <tr ng-repeat = "contacts in contact | filter:searchText">
+				 	    <td>{{contacts.name}}</td>
+				 	    <td>{{contacts.email}}</td>
+				 	    <td>{{contacts.phone}}</td>
+				 	</tr>
+				</table>
+
+				<h3>The div was entered {{enterCount}} times</h3>
+				<div class="divbox" ng-mouseenter="enterCount = enterCount + 1">
+				</div>
+
+				<h3>Random Color Generator</h3>
+				<div class="divbox" ng-style="myStyle" ng-mouseenter="myStyle={'background-color':randomColor()}">
+				</div>
+
+				<div class='resetBtn' >
+			 	<button ng-click="myStyle={'background-color':'replay()'}">Replay Colors</button>
+			 	</div>
+
+		 	</div>
+
+
+	 </div>
+
+	 <p>********************************************************************************</p>	
+
+	 <strong><h1>Animations</h1></strong>
+
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+<script type="text/javascript">
+	angular.module('myapp', []).controller('ExpressionsController',function($scope){
+		$scope.show = false
+		$scope.generate = function(){
+			$scope.show = !$scope.show
+		}
+	}).controller('directivesControllers', function($scope, $sce){
+			$scope.names = ["Harry", "Ron", "Hermione", "Sirius", "Hedwig", "Tonks", "Tonks", "Tonks"];
+			$scope.symbols = $sce.trustAsHtml("<li>&spades;</li>"); 
+			$scope.symbols2 = $sce.trustAsHtml("<li>&clubs;</li>");
+			$scope.symbols3 = $sce.trustAsHtml("<li>&hearts;</li>");
+			$scope.symbols4 = $sce.trustAsHtml("<li>&diams;</li>");
+
+			$scope.myObj = {
+				name: 'Ari',
+				occupation: 'developer',
+				hometown: 'New York'
+			}
+
+			$scope.cams = [
+			  {
+			    title: "Nikon D3100 DSLR",
+			    image: "http://ecx.images-amazon.com/images/I/713u2gDQqML._SX522_.jpg",
+			    rating: 3.4,
+			    price: 369.99,
+			    onSale: true
+			  },
+			  {
+			    title: "Canon EOS 70D",
+			    image: "http://ecx.images-amazon.com/images/I/81U00AkAUWL._SX522_.jpg",
+			    rating: 2.0,
+			    price: 1099.0,
+			    onSale: false
+			  },
+			  {
+			    title: "Nikon D810A",
+			    image:"http://ecx.images-amazon.com/images/I/91wtXIfLl2L._SX522_.jpg",
+			    rating: 4.2,
+			    price: 3796.95,
+			    onSale: true
+			  }
+			]
+
+			$scope.rating = false
+			$scope.ratingClicked = function(){
+				$scope.rating = !$scope.rating
+			}
+	}).controller('ExercisesController', function($scope){
+		$scope.FavColor = "black";
+		$scope.secondsInACentury = 100*365*24*60*60;
+		var today = new Date(); 
+		$scope.rightNow =  today; 
+
+	}).controller("ScopeController", function($rootScope){
+		$rootScope.view = {}
+
+	}).controller('MainController', function($scope) {
+		$scope.view = {};
+ 	 	$scope.number = 42;
+
+	}).controller('parentController', function($rootScope) {
+		$rootScope.message = [{mes: 'hello'}, {mes: 'world'}];
+
+	}).controller('childController', function($scope) {
+
+	}).controller('eventController', function($scope, $timeout) {
+		$scope.number = 5;
+		$scope.pickRandomNumber = function(){
+			$scope.number = Math.floor(Math.random() * 10) + 1
+		};
+
+		$scope.string = "hello";
+		$scope.reverseString = function (){
+			$scope.string = $scope.string.split('').reverse().join(''); 
+		}
+
+		$scope.score1 = 0;
+		$scope.score2 = 0;
+		$scope.wins = 0
+		$scope.wins2 = 0
+		$scope.upTickScore1=function(){
+				$scope.score1 +=1; 
+
+			if($scope.score1 % 2 === 0){
+				$scope.turn = false;
+
+			}else if($scope.score1 === 11){
+				$scope.wins +=1; 
+			}
+		}
+
+		$scope.upTickScore2=function(){
+			$scope.score2 +=1; 
+			if($scope.score1 % 2 === 0){
+				$scope.turn = true;
+
+			}else if($scope.score2 === 11){
+				$scope.wins2 +=1; 
+			}
+		}
+
+		$scope.reset=function(){
+			$scope.score1 = 0;
+			$scope.score2 = 0;
+			delete $scope.turn;
+		}
+
+		$scope.contact = [];
+
+		$scope.submitForm= function(contactForm){
+			if (contactForm.$valid) {
+				$scope.contact.push({"name":$scope.contact.name, "email":$scope.contact.email, "phone":$scope.contact.phone});
+			};
+		}
+
+		$scope.enterCount = 0;
+		$scope.colorStore =[];
+
+		$scope.randomColor=function (){
+		    var x=Math.round(0xffffff * Math.random()).toString(16);
+		    var y=(6-x.length);
+		    var z="000000";
+		    var z1 = z.substring(0,y);
+		    var color = "#" + z1 + x;
+		    $scope.colorStore.push(color);
+		    return color;
+		  }
+
+		  var replaying = false;
+
+		$scope.replay = function() {
+
+			var displayPrevColor = function() {
+				if(replaying){
+					for(var i = 0; i < $scope.colorStore.length; i++){
+						return $scope.colorStore[i];	     	
+					} 
+					replaying = false;
+				}else{
+					$timeout(displayPrevColor, 1000);
+				}    
+			};
+			
+			if (!replaying) {
+			    replaying = true;
+			    // This timeout starts the timeout loop
+			    $timeout(function() { displayPrevColor(); }, 500);
+			}
+
+			return displayPrevColor;
+		    
+		};
+
+	}).controller('animationsController', function($scope) {
+
+
+	});
+</script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+
+</body>
+</html>

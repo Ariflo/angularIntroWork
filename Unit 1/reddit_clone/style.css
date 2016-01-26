@@ -1,0 +1,18 @@
+.container{
+	background: grey;
+	padding: 1%;
+	margin-top: 1%; 
+}
+
+.postTitle{
+	float:left;
+	margin-left: 5px;
+}
+
+.text-right{
+	margin-right: 1%;
+}
+
+.postComment{
+	float:left;
+}
