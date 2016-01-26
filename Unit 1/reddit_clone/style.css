@@ -4,6 +4,18 @@
 	margin-top: 1%; 
 }
 
+h3 {
+	margin: 0px;
+}
+
+body > div > form > div {
+	width: 80%;
+	margin-left: 10%;
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 5px;
+}
+
 .postTitle{
 	float:left;
 	margin-left: 5px;
@@ -15,4 +27,9 @@
 
 .postComment{
 	float:left;
+}
+
+.ico {
+	height: 100px;
+	width: 100px;
 }

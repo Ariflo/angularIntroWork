@@ -2,6 +2,12 @@
 <html>
 <head>
 	<title>Redditer</title>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body  ng-app='myApp'>
 <nav class="navbar navbar-inverse">
@@ -45,45 +51,33 @@
 			    <input type="text" ng-model="newPostData.image" name="image" class="form-control" id="image" placeholder="http://url.com">	
 
 			    <label for="comment">Comment</label>
-			    <input type="comment" ng-model="newPostData.comment" name="comment"  class="form-control" id="comment" placeholder="comments">
-	 	</div>
+			    <input type="comment" ng-model="newPostData.comment" name="comment"  class="form-control" id="comment" placeholder="comments"><br>
 	 	<input type="submit" class="btn btn-success"  value="POST">
+	 	</div>
 	</form>
 
 
 	<div class="container" ng-if="show" ng-repeat = "post in posts | filter:searchText">
 		<div class="row">
-			<img class = "col-md-2" src="{{post.image}}">
-			<h3 class="">{{post.title}}</h3>
-			<h6 class="text-right">by {{post.author}}</h6>
-			<p class="">{{post.comment}}</p>
-			
+			<div class="col-xs-2">
+				<img class="ico" src="{{post.image}}">
+			</div>
+			<div class="col-xs-10">
+				<h3 class="">{{post.title}}</h3>
+				<h6 class="text-right">by {{post.author}}</h6>
+				<p class="">{{post.comment}}</p>
+				<p> 
+					<span class="glyphicon glyphicon-calendar"></span> {{post.date | date:'EEEE, MMMM d, y'}}
+					 | <span class="glyphicon glyphicon-comment"></span>
+					 | <span ng-click=""> <span class="glyphicon glyphicon-pencil"></span> New Comment</span></p> 
+			</div>
+			<div>
+				
+			</div>
 		</div>
 	</div>
 
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.js"></script>
-<script type="text/javascript">
-	angular.module('myApp', ['ngAnimate']).controller('firstController',function($scope){
-
-		$scope.posts = []; 
-		$scope.newPostData = {};
-		$scope.show = false; 	
-
-		$scope.postSubmit = function(form){
-			$scope.show = true;
-			if (form.$valid) {
-				$scope.posts.push({"title": $scope.newPostData.title, "author": $scope.newPostData.author, "image": $scope.newPostData.image, "comment": $scope.newPostData.comment});
-
-			};
-			$scope.newPostData = {};
-		}
-	});
-
-</script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="style.css">
 </body>
 </html>
