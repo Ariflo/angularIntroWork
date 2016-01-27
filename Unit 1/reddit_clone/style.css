@@ -18,6 +18,13 @@ body > div > form > div {
 	padding: 5px;
 }
 
+.commentBox{
+	height: 30px;
+	width: 100%;
+	overflow-x:hidden;
+	overflow-y: scroll;
+}
+
 .postTitle{
 	float:left;
 	margin-left: 5px;
