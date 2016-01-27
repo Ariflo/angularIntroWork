@@ -64,7 +64,7 @@
 			
 			<div class="col-xs-10">
 				 <div class="titleThumb">
-				 <strong>{{post.title}}  |  </strong><span ng-click="ratingUp(post)" id="thumbs-up" class="glyphicon glyphicon-thumbs-up"></span><span  ng-click="ratingDown(post)" id="thumbs-down" class="glyphicon glyphicon-thumbs-down"></span>{{post.rating}}
+				 <strong>{{post.title}}  |  </strong><span ng-style="{'color':'green'}" ng-click="ratingUp(post)" id="thumbs-up" class="glyphicon glyphicon-thumbs-up"></span><span ng-style="{'color':'red'}" ng-click="ratingDown(post)" id="thumbs-down" class="glyphicon glyphicon-thumbs-down"></span><span ng-class="{greenNum:  post.rating > 0 , redNum: post.rating < 0}">{{post.rating}}</span>
 				 </div>
 				<h6 class="text-right">by {{post.author}}</h6>
 				<p class="">{{post.comment}}</p>

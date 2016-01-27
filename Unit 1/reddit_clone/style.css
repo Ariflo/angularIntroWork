@@ -93,3 +93,11 @@ body > div > form > div {
 .newComment {
 	text-align: center;
 }
+
+.greenNum{
+	color: green;
+}
+
+.redNum{
+	color: red;
+}
