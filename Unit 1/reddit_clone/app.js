@@ -45,7 +45,7 @@ angular.module('myApp', ['ngAnimate']).controller('firstController',function($sc
 	}
 
 	$scope.showStuff = function(){
-		$scope.reveal = true; 
+		$scope.reveal = !$scope.reveal; 
 	}	
 });
 
