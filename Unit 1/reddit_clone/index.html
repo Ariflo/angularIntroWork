@@ -68,8 +68,12 @@
 				 </div>
 				<h6 class="text-right">by {{post.author}}</h6>
 				<p class="">{{post.comment}}</p>
-				<p><span class="glyphicon glyphicon-calendar"></span> {{post.date | date:'EEEE, MMMM d, y'}}
-				| <span ng-click="toggleComments(post)"><span class="glyphicon glyphicon-comment"> {{post.comments.length}} <span ng-hide="0<=post.comments.length<2"> Comments</span></span></span>
+				<p><span class="glyphicon glyphicon-calendar"></span> {{post.date | date:'EEEE, MMMM d, y @ h:mm:ss a'}}
+				| <span ng-click="toggleComments(post)"><span class="glyphicon glyphicon-comment"></span><ng-pluralize count="post.comments.length"
+                	 when="{'one': ' {} Comment',
+               		      'other': ' {} Comments'}">
+				</ng-pluralize>
+				</span>
 				| <span ng-click="toggleNewComment(post)"> <span class="glyphicon glyphicon-pencil"></span> New Comment</span></p>
 			</div>
 		</div>
