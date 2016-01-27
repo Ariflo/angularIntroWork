@@ -3,6 +3,7 @@ angular.module('myApp', ['ngAnimate']).controller('firstController',function($sc
 	$scope.posts = []; 
 	$scope.newPostData = {};
 	$scope.show = false;
+	$scope.reveal = false;
 
 	$scope.commentOn = false;
 	$scope.newCommentOn = false;
@@ -42,5 +43,9 @@ angular.module('myApp', ['ngAnimate']).controller('firstController',function($sc
 	$scope.toggleNewComment = function() {
 		$scope.newCommentOn = !$scope.newCommentOn;
 	}
+
+	$scope.showStuff = function(){
+		$scope.reveal = true; 
+	}	
 });
 
