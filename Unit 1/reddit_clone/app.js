@@ -4,15 +4,12 @@ angular.module('myApp', ['ngAnimate']).controller('firstController',function($sc
 	$scope.newPostData = {};
 	$scope.show = false;
 
-	$scope.commentOn = false;
-	$scope.newCommentOn = false;
-
 
 	$scope.postSubmit = function(form){
 		$scope.show = true;
 		if (form.$valid) {
 			$scope.number = 0;
-			$scope.posts.push({"title": $scope.newPostData.title, "author": $scope.newPostData.author, "image": $scope.newPostData.image, "comment": $scope.newPostData.comment, "date": new Date(), "rating": $scope.number, "comments": [], "addComment": {}});
+			$scope.posts.push({"title": $scope.newPostData.title, "author": $scope.newPostData.author, "image": $scope.newPostData.image, "comment": $scope.newPostData.comment, "date": new Date(), "rating": $scope.number, "comments": [], "addComment": {}, "commentOn": false, "newCommentOn": false});
 		};
 		$scope.newPostData = {};
 	}
@@ -35,12 +32,15 @@ angular.module('myApp', ['ngAnimate']).controller('firstController',function($sc
 		post.rating -= 1;
 	}
 
-	$scope.toggleComments = function() {
-		$scope.commentOn= !$scope.commentOn;
+	$scope.toggleComments = function(post) {
+		post.commentOn= !post.commentOn;
+		post.newCommentOn = false;
+
 	}
 
-	$scope.toggleNewComment = function() {
-		$scope.newCommentOn = !$scope.newCommentOn;
+	$scope.toggleNewComment = function(post) {
+		post.newCommentOn= !post.newCommentOn;
+		post.commentOn = false;
 	}
 });
 
