@@ -1,4 +1,4 @@
-angular.module('myApp', ['ngAnimate']).controller('firstController',function($scope){
+angular.module('myApp', ['angularMoment', 'ngAnimate']).controller('firstController',function($scope){
 
 	$scope.posts = []; 
 	$scope.newPostData = {};
