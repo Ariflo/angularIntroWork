@@ -63,8 +63,8 @@
 
 	<div class="container" ng-if="show" ng-repeat = "post in posts | filter:searchText | orderBy: '-currentOrderBy'">
 		<div class="row">
-			<div>
-				<img class = "col-xs-2" src="{{post.image}}">
+			<div class = "col-xs-2" >
+				<img src="{{post.image}}">
 			</div>
 			
 			<div class="col-xs-10">
@@ -74,9 +74,22 @@
 				<h6 class="text-right">by {{post.author}}</h6>
 				<p class="">{{post.comment}}</p>
 				<p><span class="glyphicon glyphicon-calendar"></span> {{post.date | date:'EEEE, MMMM d, y'}}
-				| <span class="glyphicon glyphicon-comment"></span>
-				| <span ng-click=""> <span class="glyphicon glyphicon-pencil"></span> New Comment</span></p>
+				| <span ng-click="toggleComments()"><span class="glyphicon glyphicon-comment"> View Comments</span></span>
+				| <span ng-click="toggleNewComment()"> <span class="glyphicon glyphicon-pencil"></span> New Comment</span></p>
 			</div>
+		</div>
+		
+		<div>
+			<form name="newComment" ng-submit="postComment(newComment, post)" ng-show="newCommentOn==true">
+				<label><b>Author:</b></label>
+				<input type="text" name="author" ng-model="post.addComment.author">
+				<label><b>Comment:</b></label> <input type="text" name="comment" ng-model="post.addComment.comment">
+				<input type="submit">
+			</form>
+		</div>
+
+		<div ng-repeat="comment in post.comments">
+			<p ng-show="commentOn==true">{{comment.author}}: {{comment.comment}} </p>
 		</div>
 
 	</div>
