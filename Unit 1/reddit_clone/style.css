@@ -10,6 +10,10 @@ h3 {
 	margin: 0px;
 }
 
+body {
+	padding-bottom: 50px;
+}
+
 body > div > form > div {
 	width: 80%;
 	margin-left: 10%;
@@ -88,6 +92,7 @@ body > div > form > div {
 
 #sortBy{
 	margin-top: 1%;
+	height: 32px;
 }
 
 .comment {
