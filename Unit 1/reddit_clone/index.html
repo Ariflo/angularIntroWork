@@ -83,8 +83,8 @@
 		<div class="newComment">
 			<form name="newComment" ng-submit="postComment(newComment, post)" ng-show="post.newCommentOn===true">
 				<label><b>Name:</b></label>
-				<input type="text" name="author" ng-model="post.addComment.author" value="Your Name">
-				<label><b>Comment:</b></label> <input type="text" name="comment" ng-model="post.addComment.comment" value="Write a comment here..">
+				<input type="text" name="author" ng-model="post.addComment.author" placeholder="Your Name" required>
+				<label><b>Comment:</b></label> <input type="text" name="comment" ng-model="post.addComment.comment" placeholder="Write a comment here.." required>
 				<input type="submit">
 			</form>
 		</div>
