@@ -42,3 +42,24 @@ body > div > form > div {
 #thumbs-up, #thumbs-down{
 	margin: .5%;
 }
+
+.slide.ng-enter{
+    transition: 0.5s ease all;
+    opacity: 0;
+}
+.slide.ng-enter.ng-enter-active{
+    opacity: 1;
+}
+
+.slide.ng-leave{
+    transition: 0.5s ease all;
+    opacity: 1;
+}
+
+.slide.ng-leave.ng-leave-active{
+    opacity: 0;
+}
+
+#sortBy{
+	margin-top: 1%;
+}
