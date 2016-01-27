@@ -2,6 +2,8 @@
 	background: grey;
 	padding: 1%;
 	margin-top: 1%; 
+	border: 1px solid black;
+	border-radius: 5px;
 }
 
 h3 {
@@ -31,7 +33,7 @@ body > div > form > div {
 
 .ico {
 	height: 100px;
-	width: 100px;
+	width: 100%;
 }
 
 
@@ -41,4 +43,15 @@ body > div > form > div {
 
 #thumbs-up, #thumbs-down{
 	margin: .5%;
+}
+
+.comment {
+	background-color: white;
+	width: 80%;
+	margin-left: 10%;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+.newComment {
+	text-align: center;
 }

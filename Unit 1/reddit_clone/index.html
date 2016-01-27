@@ -73,22 +73,22 @@
 				<h6 class="text-right">by {{post.author}}</h6>
 				<p class="">{{post.comment}}</p>
 				<p><span class="glyphicon glyphicon-calendar"></span> {{post.date | date:'EEEE, MMMM d, y'}}
-				| <span ng-click="toggleComments()"><span class="glyphicon glyphicon-comment"> View Comments</span></span>
-				| <span ng-click="toggleNewComment()"> <span class="glyphicon glyphicon-pencil"></span> New Comment</span></p>
+				| <span ng-click="toggleComments(post)"><span class="glyphicon glyphicon-comment"> {{post.comments.length}} <span ng-hide="0<=post.comments.length<2"> Comments</span></span></span>
+				| <span ng-click="toggleNewComment(post)"> <span class="glyphicon glyphicon-pencil"></span> New Comment</span></p>
 			</div>
 		</div>
 		
-		<div>
-			<form name="newComment" ng-submit="postComment(newComment, post)" ng-show="newCommentOn==true">
-				<label><b>Author:</b></label>
-				<input type="text" name="author" ng-model="post.addComment.author">
-				<label><b>Comment:</b></label> <input type="text" name="comment" ng-model="post.addComment.comment">
+		<div class="newComment">
+			<form name="newComment" ng-submit="postComment(newComment, post)" ng-show="post.newCommentOn===true">
+				<label><b>Name:</b></label>
+				<input type="text" name="author" ng-model="post.addComment.author" value="Your Name">
+				<label><b>Comment:</b></label> <input type="text" name="comment" ng-model="post.addComment.comment" value="Write a comment here..">
 				<input type="submit">
 			</form>
 		</div>
 
 		<div ng-repeat="comment in post.comments">
-			<p ng-show="commentOn==true">{{comment.author}}: {{comment.comment}} </p>
+			<div ng-show="post.commentOn===true" class="comment"><b>{{comment.author}}:</b> {{comment.comment}}</div>
 		</div>
 
 	</div>
