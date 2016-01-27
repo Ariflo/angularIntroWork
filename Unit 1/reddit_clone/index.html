@@ -51,7 +51,7 @@
 			    <input type="text" ng-model="newPostData.author" name="author" class="form-control" id="author" placeholder="Author" required>		 
 
 			    <label for="image">Image</label>
-			    <input type="text" ng-model="newPostData.image" name="image" class="form-control" id="image" placeholder="http://url.com" ng-pattern="[a-zA-Z]" required>	
+			    <input type="url" ng-model="newPostData.image" name="image" class="form-control" id="image" placeholder="http://url.com"required>	
 
 			    <label for="comment">Comment</label>
 			    <input type="comment" ng-model="newPostData.comment" name="comment"  class="form-control" id="comment" placeholder="comments" required><br>
