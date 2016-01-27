@@ -3,6 +3,7 @@ angular.module('myApp', ['ngAnimate']).controller('firstController',function($sc
 	$scope.posts = []; 
 	$scope.newPostData = {};
 	$scope.show = false;
+	$scope.reveal = false;
 
 
 	$scope.postSubmit = function(form){
@@ -42,5 +43,9 @@ angular.module('myApp', ['ngAnimate']).controller('firstController',function($sc
 		post.newCommentOn= !post.newCommentOn;
 		post.commentOn = false;
 	}
+
+	$scope.showStuff = function(){
+		$scope.reveal = !$scope.reveal; 
+	}	
 });
 

@@ -62,6 +62,23 @@ body > div > form > div {
     opacity: 0;
 }
 
+.container.ng-enter{
+    transition: 0.5s ease all;
+    opacity: 0;
+}
+.container.ng-enter.ng-enter-active{
+    opacity: 1;
+}
+
+.container.ng-leave{
+    transition: 0.5s ease all;
+    opacity: 1;
+}
+
+.container.ng-leave.ng-leave-active{
+    opacity: 0;
+}
+
 #sortBy{
 	margin-top: 1%;
 }
