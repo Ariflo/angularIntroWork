@@ -3,8 +3,6 @@ angular.module('myApp', ['ngAnimate']).controller('firstController',function($sc
 	$scope.posts = []; 
 	$scope.newPostData = {};
 	$scope.show = false;
-	$scope.commentOn = false;
-	$scope.newCommentOn = false;
 
 
 	$scope.postSubmit = function(form){
