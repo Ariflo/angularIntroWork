@@ -21,8 +21,8 @@
 
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li role="presentation" class="dropdown">
-          <a ng-click="showStuff()">Post<span class="glyphicon glyphicon-plus"></span></a>
+        <li role="presentation" class="dropdown pointer noselect">
+          <a ng-click="showStuff()">Post <span class="glyphicon glyphicon-plus"></span></a>
         </li>
       </ul>
       <form class="navbar-form navbar-left" role="search">
@@ -65,18 +65,18 @@
 			</div>
 			
 			<div class="col-xs-10">
-				 <div class="titleThumb">
-				 <strong>{{post.title}}  |  </strong><span ng-style="{'color':'green'}" ng-click="ratingUp(post)" id="thumbs-up" class="glyphicon glyphicon-thumbs-up"></span><span ng-style="{'color':'red'}" ng-click="ratingDown(post)" id="thumbs-down" class="glyphicon glyphicon-thumbs-down"></span><span ng-class="{greenNum:  post.rating > 0 , redNum: post.rating < 0}">{{post.rating}}</span>
+				 <div class="titleThumb noselect">
+				 <strong>{{post.title}}  |  </strong><span ng-style="{'color':'green'}" ng-click="ratingUp(post)" id="thumbs-up" class="glyphicon glyphicon-thumbs-up pointer"></span><span ng-style="{'color':'red'}" ng-click="ratingDown(post)" id="thumbs-down" class="glyphicon glyphicon-thumbs-down pointer"></span><span ng-class="{greenNum:  post.rating > 0 , redNum: post.rating < 0}">{{post.rating}}</span>
 				 </div>
 				<h6 class="text-right">by {{post.author}}</h6>
 				<p class="commentBox">{{post.comment}}</p>
-				<p><span class="glyphicon glyphicon-calendar"></span> {{post.date | amCalendar}}
-				| <span ng-click="toggleComments(post)"><span class="glyphicon glyphicon-comment"></span><ng-pluralize count="post.comments.length"
+				<p class="noselect"><span class="glyphicon glyphicon-calendar"></span> {{post.date | amCalendar}}
+				| <span ng-click="toggleComments(post)" class="pointer"><span class="glyphicon glyphicon-comment"></span><ng-pluralize count="post.comments.length"
                 	 when="{'one': ' {} Comment',
                		      'other': ' {} Comments'}">
 				</ng-pluralize>
 				</span>
-				| <span ng-click="toggleNewComment(post)"> <span class="glyphicon glyphicon-pencil"></span> New Comment</span></p>
+				| <span ng-click="toggleNewComment(post)" class="pointer"> <span class="glyphicon glyphicon-pencil"></span> New Comment</span></p>
 			</div>
 		</div>
 		
