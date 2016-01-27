@@ -70,7 +70,7 @@
 				 </div>
 				<h6 class="text-right">by {{post.author}}</h6>
 				<p class="commentBox">{{post.comment}}</p>
-				<p><span class="glyphicon glyphicon-calendar"></span> {{post.date | date:'EEEE, MMMM d, y @ h:mm:ss a'}}
+				<p><span class="glyphicon glyphicon-calendar"></span> {{post.date | amCalendar}}
 				| <span ng-click="toggleComments(post)"><span class="glyphicon glyphicon-comment"></span><ng-pluralize count="post.comments.length"
                 	 when="{'one': ' {} Comment',
                		      'other': ' {} Comments'}">
