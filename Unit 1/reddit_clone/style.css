@@ -10,12 +10,30 @@ h3 {
 	margin: 0px;
 }
 
+body {
+	padding-bottom: 50px;
+}
+
 body > div > form > div {
 	width: 80%;
 	margin-left: 10%;
 	border: 1px solid black;
 	border-radius: 5px;
 	padding: 5px;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* IE/Edge */
+  user-select: none;           /* non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+.pointer {
+	cursor: pointer;
 }
 
 .commentBox{
@@ -39,7 +57,7 @@ body > div > form > div {
 }
 
 .ico {
-	height: 100px;
+	height: 115px;
 	width: 100%;
 }
 
@@ -88,6 +106,7 @@ body > div > form > div {
 
 #sortBy{
 	margin-top: 1%;
+	height: 32px;
 }
 
 .comment {
