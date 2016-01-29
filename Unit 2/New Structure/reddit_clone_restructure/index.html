@@ -5,9 +5,10 @@
 
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.js"></script>
-	<script type="text/javascript" src="app.js"></script>
+	<script src="./js/app.js" type="text/javascript"></script>
+	<script src="./js/controllers.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body  ng-app='myApp' ng-controller="firstController">
 <nav class="navbar navbar-inverse">
@@ -70,8 +71,8 @@
 				<p class="commentBox">{{post.comment}}</p>
 				<p><span class="glyphicon glyphicon-calendar"></span> {{post.date | date:'EEEE, MMMM d, y @ h:mm:ss a'}}
 				| <span ng-click="toggleComments(post)"><span class="glyphicon glyphicon-comment"></span><ng-pluralize count="post.comments.length"
-                	 when="{'one': ' {} Comment',
-               		      'other': ' {} Comments'}">
+                	 		when="{'one': ' {} Comment',
+               		      	'other': ' {} Comments'}">
 				</ng-pluralize>
 				</span>
 				| <span ng-click="toggleNewComment(post)"> <span class="glyphicon glyphicon-pencil"></span> New Comment</span></p>

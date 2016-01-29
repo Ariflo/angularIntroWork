@@ -1,4 +1,4 @@
-angular.module('myApp', ['ngAnimate']).controller('firstController',function($scope){
+reddit.controller('firstController',function($scope){
 
 	$scope.posts = []; 
 	$scope.newPostData = {};
@@ -48,4 +48,3 @@ angular.module('myApp', ['ngAnimate']).controller('firstController',function($sc
 		$scope.reveal = !$scope.reveal; 
 	}	
 });
-
