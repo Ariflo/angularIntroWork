@@ -1,10 +1,10 @@
-filterApp.filter('kebab', function () {
+routingApp.filter('kebab', function () {
 	return function (input) {
 		return input.replace(/_/g, '-');		
   	};
 });
 
-filterApp.filter('camel', function () {
+routingApp.filter('camel', function () {
 	return function (input) {
 		for(var i = 0; i<input.length; i++){
 			if(input[i] === '_' || input[i] === '-'){
@@ -15,7 +15,7 @@ filterApp.filter('camel', function () {
   	};
 });
 
-filterApp.filter('redact', function () {
+routingApp.filter('redact', function () {
 	return function (input, word) {
 		return input.replace(word, 'REDACTED');		
   	};

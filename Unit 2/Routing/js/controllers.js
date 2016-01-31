@@ -1,3 +1,0 @@
-filterApp.controller('filterController', function($scope) { 
-	// ...
-});
