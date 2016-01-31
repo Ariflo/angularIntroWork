@@ -14,3 +14,9 @@ filterApp.filter('camel', function () {
 		}		
   	};
 });
+
+filterApp.filter('redact', function () {
+	return function (input, word) {
+		return input.replace(word, 'REDACTED');		
+  	};
+});
