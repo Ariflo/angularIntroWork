@@ -12,20 +12,20 @@ angular.module("applydigest",[]).controller("MainController", function($rootScop
   },1000)
 })
 
-//Make a guess before you run the code. What will this code log?
-function x() {
-    var a = true;
-    var y = function() {
-        a = false;
-    }
+// //Make a guess before you run the code. What will this code log?
+// function x() {
+//     var a = true;
+//     var y = function() {
+//         a = false;
+//     }
 
-    setTimeout(function(){
-        console.log(a);
-    }, 1000);
+//     setTimeout(function(){
+//         console.log(a);
+//     }, 1000);
 
-    return y;
-}
+//     return y;
+// }
 
-var outsideY = x();
+// var outsideY = x();
 
-setTimeout(outsideY, 500);
+// setTimeout(outsideY, 500);
