@@ -1,0 +1,3 @@
+filterApp.filter('kebab', function () {
+
+});
