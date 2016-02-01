@@ -1,6 +1,6 @@
 var movieApp = angular.module('movieSearchApp', ['ngRoute', 'ngAnimate']);
 
-movieApp.config(function($routeProvider) {
+movieApp.config(function($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'partials/home.html',
@@ -11,5 +11,7 @@ movieApp.config(function($routeProvider) {
         templateUrl: 'partials/results.html',
         controller: 'ResultsController'
       })    
-      
+
+      $locationProvider.html5Mode( false );
+
 });

@@ -15,8 +15,10 @@
 	<div class ="text-center">
 		<h1>Angular OMDb API Search</h1>
 		<label>Enter a movie by Title:</label>
-		<input type="text" class="col-xs-4" required>
-		<input ng-click="callApi()"class='btn btn-md btn-primary' type="submit" value='Search'>
+		<form >
+			<input ng-model ="movie.title"  type="text" class="col-xs-4" required>
+			<input type="submit" class='btn btn-md btn-primary'  ng-click="callMovieApi(movie.title)">
+		</form>
 	</div>
 </body>
 </html>
