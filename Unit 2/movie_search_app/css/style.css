@@ -1,0 +1,7 @@
+h1, label, input{
+	display: block;
+}
+
+input{
+	margin-left: 33%; 
+}
