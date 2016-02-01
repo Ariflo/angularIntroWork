@@ -5,3 +5,8 @@ h1, label, input{
 input{
 	margin-left: 33%; 
 }
+
+.btn{
+	margin-top:1%;
+	margin-right: 32%;
+}
