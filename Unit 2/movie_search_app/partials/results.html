@@ -8,6 +8,6 @@
 	</div>
 
 	<div class="col-xs-5" ng-repeat="movie in moviesList">
-		<h4>{{movie.Title}}</h4>
-		<p>{{movie.Year}}</p>
+		<a ng-click = "showMeMovie(movie.Title, movie.imdbID)"><h4>{{movie.Title}}</h4>
+		<p>{{movie.Year}}</p></a>
 	</div>

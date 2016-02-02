@@ -10,6 +10,11 @@ movieApp.config(function($routeProvider, $locationProvider) {
       .when('/:movie', {
         templateUrl: 'partials/results.html',
         controller: 'ResultsController'
+      })      
+
+      .when('/movie/:id', {
+        templateUrl: 'partials/movieResults.html',
+        controller: 'movieResultsController'
       })    
 
       $locationProvider.html5Mode( false );

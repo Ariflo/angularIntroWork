@@ -16,3 +16,8 @@ input{
 	margin-right: 32%;
 }
 
+.col-xs-5{
+	border-style: solid;
+	border-color: black;
+	margin: 1%;
+}

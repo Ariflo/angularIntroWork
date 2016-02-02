@@ -2,7 +2,7 @@ movieApp.controller('HomeController', ['$scope', '$http', '$location', 'moviesSe
 	$scope.movie = {};
 
 	$scope.callMovieApi = function (title){
-		$http.get("http://www.omdbapi.com/?s=" + title +"&r=json").then(function(data){
+		$http.get("http://www.omdbapi.com/?s=" + title).then(function(data){
 
 		    $scope.movies = data.data.Search;
 		    moviesService.addMovies($scope.movies);
@@ -12,8 +12,22 @@ movieApp.controller('HomeController', ['$scope', '$http', '$location', 'moviesSe
 	}
 }]);
 
-movieApp.controller('ResultsController', ['$scope', 'moviesService', function($scope, moviesService) {
+movieApp.controller('ResultsController', ['$scope', 'moviesService', '$http',  '$location', function($scope, moviesService, $http, $location) {
 		$scope.movies = moviesService.getMovies(); 
 		$scope.moviesList = $scope.movies[0]; 
+		
+		$scope.showMeMovie = function (title, id){
+			$http.get("http://www.omdbapi.com/?t=" + title).then(function(data){
 
+			    $scope.movies = data.data;
+			    moviesService.addMovies($scope.movies);
+
+			     $location.path("/movie/" + id);
+			});
+		}
+
+}]);
+
+movieApp.controller('movieResultsController', ['$scope', 'moviesService', '$http', function($scope, moviesService, $http) {
+		$scope.movie = moviesService.getMovies(); 
 }]);
