@@ -5,13 +5,18 @@ movieApp.service('moviesService', function() {
             movieList.push(newObj);
         };
 
+        var resetList = function(){
+            movieList =[];
+        }
+
         var getMovies = function(){
+
             return movieList;
         };
 
         return {
           addMovies: addMovies,
-          getMovies: getMovies
+          getMovies: getMovies,
+          resetList: resetList
         };
-
 });
