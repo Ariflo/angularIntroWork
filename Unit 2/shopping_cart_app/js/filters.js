@@ -1,10 +1,10 @@
-movieApp.filter('kebab', function () {
+cartApp.filter('kebab', function () {
 	return function (input) {
 		return input.replace(/_/g, '-');		
   	};
 });
 
-movieApp.filter('camel', function () {
+cartApp.filter('camel', function () {
 	return function (input) {
 		for(var i = 0; i<input.length; i++){
 			if(input[i] === '_' || input[i] === '-'){
@@ -15,7 +15,7 @@ movieApp.filter('camel', function () {
   	};
 });
 
-movieApp.filter('redact', function () {
+cartApp.filter('redact', function () {
 	return function (input, word) {
 		return input.replace(word, 'REDACTED');		
   	};
