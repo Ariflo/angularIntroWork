@@ -1,5 +1,3 @@
-var path = require("path");
-
 var cartApp = angular.module('cartApp', ['ngRoute', 'ngAnimate']);
 
 cartApp.config(function($routeProvider, $locationProvider) {
