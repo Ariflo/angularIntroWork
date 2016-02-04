@@ -1,8 +1,7 @@
 <div>
 <label>Search by Category</label>
+
 <select>
-	<div ng-repeat="tea in teas">
-		<option>{{tea.categories}}</option>
-	</div>
+	<option ng-repeat="teaCategory in final track by $index ">{{teaCategory}}</option>
 </select> 
 </div>

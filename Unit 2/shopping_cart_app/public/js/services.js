@@ -1,3 +1,4 @@
-// cartApp.service('cartService', ['$scope', '$resource' function($scope, $resource) {
-// 	//...
-// }]);
+cartApp.service('cleanCategoriesService', ['$parse', '$http', function($parse, $http) {
+	// var teaCategories = {};
+	// return teaCategories;
+}]);
