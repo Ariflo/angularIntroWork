@@ -4,7 +4,16 @@
   "description": "angular shopping cart",
   "main": "server.js",
   "dependencies": {
-    "knex": "^0.9.0"
+    "body-parser": "^1.14.2",
+    "cookie-parser": "^1.4.1",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "knex": "^0.9.0",
+    "locus": "^1.2.0",
+    "method-override": "^2.3.5",
+    "morgan": "^1.6.1",
+    "pg": "^4.4.4",
+    "serve-favicon": "^2.3.0"
   },
   "devDependencies": {},
   "scripts": {
