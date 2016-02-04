@@ -1,0 +1,23 @@
+{
+  "name": "shopping_cart_app",
+  "version": "1.0.0",
+  "description": "angular shopping cart",
+  "main": "server.js",
+  "dependencies": {
+    "knex": "^0.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Ariflo/angularIntroWork.git"
+  },
+  "author": "Ari",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ariflo/angularIntroWork/issues"
+  },
+  "homepage": "https://github.com/Ariflo/angularIntroWork#readme"
+}
