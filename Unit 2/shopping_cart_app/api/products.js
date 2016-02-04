@@ -2,7 +2,7 @@ var express = require('express');
 var apiRouter = express.Router();
 var knex = require('../db/knex');
 
-apiRouter.get('/', function(req, res, next) {
+apiRouter.get('/products', function(req, res, next) {
 	knex.select().table('products').then(function(products) {
 		res.json(products);
 	});

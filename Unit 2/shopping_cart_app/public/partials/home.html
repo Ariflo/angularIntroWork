@@ -1,1 +1,8 @@
-<gs-angular-logo></gs-angular-logo>
+<div>
+<label>Search by Category</label>
+<select>
+	<div ng-repeat="tea in teas">
+		<option>{{tea.categories}}</option>
+	</div>
+</select> 
+</div>

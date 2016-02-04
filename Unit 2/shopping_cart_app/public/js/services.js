@@ -1,3 +1,3 @@
-cartApp.service('cartService', function() {
-
-});
+// cartApp.service('cartService', ['$scope', '$resource' function($scope, $resource) {
+// 	//...
+// }]);
