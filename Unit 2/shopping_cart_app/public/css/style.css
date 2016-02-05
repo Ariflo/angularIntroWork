@@ -7,3 +7,24 @@
 h1{
 	color: orange;
 }
+
+.pricer{
+	float: right;
+}
+
+label{
+	display: block;
+}
+
+.btn{
+	float:  right;
+}
+
+.quantityLabel{
+	display: inline;
+	margin-left: 65%;
+}
+
+.amt{
+	display: inline;
+}
