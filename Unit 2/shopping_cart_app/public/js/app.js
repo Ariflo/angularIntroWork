@@ -7,7 +7,7 @@ cartApp.config(function($routeProvider, $locationProvider) {
         controller: 'HomeController'
       })   
 
-      .when('/:cart', {
+      .when('/cart', {
         templateUrl: 'partials/cart.html',
         controller: 'CartController'
       })      

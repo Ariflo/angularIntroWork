@@ -1,0 +1,48 @@
+
+<h2>My Shopping Bag</h2> 
+<h3 class= "ordTotal">Order Total: {{total/100 | currency}} </h3>
+
+<table class=" table table-hover table-bordered">
+<tr>
+  <th scope="col">Tea</th>
+  <th scope="col">Quantity</th>   
+  <th scope="col">Sub-total</th>
+  <th scope="col"></th>
+</tr>
+
+<tr  ng-repeat="tea in cart track by $index">
+    <td class ="imgData"><img src="{{tea.imageUrl}}">
+          <div class="teaItem">
+                <label>Caffine Scale:</label><p class="data">{{tea.caffeineScale}}</p>
+          </div>
+
+          <div class="teaItem">
+            <label>Ingredients:</label><p class="data">{{tea.ingredients}}</p>
+          </div>
+
+          <div class="teaItem">
+            <label>Rating:</label><p class="data">{{tea.rating}}</p> 
+          </div>
+   </td>
+   <td ><p ng-if='bool'>{{tea.quantity}}</p>
+   <select ng-hide='bool'  ng-model="tea.quantity" class="amt">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+   </select> </td>
+   <td>{{tea.price/100 * tea.quantity  | currency}}</td>
+   <td>
+     <input class="btn btn-danger"  type="submit" ng-click="removeFromCart(tea)" value="Remove">
+     <input ng-if='bool' class="btn btn-warning" type="submit" ng-click="editCart()" value="Edit">
+     <input ng-hide='bool' class="btn btn-info" type="submit" ng-click="saveCart()" value="Save">
+   </td>
+</tr>
+ 
+</table>

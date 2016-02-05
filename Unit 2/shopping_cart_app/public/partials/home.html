@@ -1,51 +1,54 @@
 <div>
 <label class="searchName">Search by Category</label>
-<select>
-	<option ng-repeat="teaCategory in final track by $index ">{{teaCategory}}</option>
+<select ng-model="category">
+	<option></option>
+	<option ng-repeat="teaCategory in final track by $index " value="{{teaCategory}}">{{teaCategory}}</option>
 </select> 
 
 <label class="searchName">Search by name:</label>
 <input ng-model="searchText">
 
-<input type="submit" class="btn btn-danger" value="Checkout |">
-
+<button class="pull-right btn btn-danger" ng-click="displayCart()">
+   <strong>Checkout</strong> |
+   Bag: <span ng-if="cart.length > 0">({{cart.length}})</span>
+   <span ng-if="cart.length === 0">Empty!</span>
+ </button>
 
 <table class=" table table-hover table-bordered">
   <tr>
     <th scope="col">Tea</th>
     <th scope="col">Information
 	    <label class="priceLabel">Sort by Price: </label>
-		<select class="pricer">
-			<option>Highest</option>
-			<option>Lowest</option>
+		<select ng-model="sortByPrice" class="pricer">
+			<option value='-price'>Highest</option>
+			<option value='price'>Lowest</option>
 		</select> 
     </th>
   </tr>
 
-  <tr ng-repeat="tea in teas track by $index">
+  <tr ng-repeat="tea in teas | orderBy: sortByPrice | filter: searchText | filter: category">
   	 <td class ="imgData"><img src="{{tea.imageUrl}}"></td>
   	 <td class ="teaData">
 	  	<h4>{{tea.name}}</h4> 
 
   	  	<label class="quantityLabel">Quantity</label>
-  	  	<select class="amt">
-  	  		<option></option>
-  	  		<option>1</option>
-  	  		<option>2</option>
-  	  		<option>3</option>
-  	  		<option>4</option>
-  	  		<option>5</option>
-  	  		<option>6</option>
-  	  		<option>7</option>
-  	  		<option>8</option>
-  	  		<option>9</option>
-  	  		<option>10</option>
+  	  	<select ng-model="tea.quantity" class="amt">
+  	  		<option value="1">1</option>
+  	  		<option value="2">2</option>
+  	  		<option value="3">3</option>
+  	  		<option value="4">4</option>
+  	  		<option value="5">5</option>
+  	  		<option value="6">6</option>
+  	  		<option value="7">7</option>
+  	  		<option value="8">8</option>
+  	  		<option value="9">9</option>
+  	  		<option value="10">10</option>
   	  	</select> 
 
-  	  	<button class='btn btn-warning'>Add to Bag</button>
+  	  	<mt-bag cart="cart" tea="tea"></mt-bag>
   	  
   	  	<div class="teaItem">
-  	  		<label>Price:</label> <p class="data">{{tea.price}} </p>
+  	  		<label>Price:</label> <p class="data">{{tea.price/100 | currency}} </p>
   	  	</div>
   	  	<div class="teaItem">
 	  		<label>Caffine Scale:</label><p class="data">{{tea.caffeineScale}}</p>
@@ -61,7 +64,7 @@
 	  	</div>
 		<div class="teaItem">
 	  	  	<label >Categories:</label>
-	  	  	<ul ng-repeat = "category in categories">
+	  	  	<ul ng-repeat = "category in tea.categories">
 	  	  		<li>{{category}}</li>	
 	  	  	</ul>
   	  	</div>

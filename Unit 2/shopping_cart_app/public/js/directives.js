@@ -1,15 +1,14 @@
-cartApp.directive('mtCategories', function() {
+cartApp.directive('mtBag', function() {
 	  return {
 	  	scope:  {
-	  		categories: '=categories',
+	  		tea: '=tea',
+	  		cart: '=cart',
 	  	},
-	  	restrict: 'A',
-	  	templateUrl: '/templates/categories.html',
+	  	templateUrl: '/templates/bagAmt.html',
 	  	link: function(scope, element, attrs) {
-	  		var arr = [];
-		      	for(var i = 0; i<scope.categories.length; i++){
-		      		arr.push(scope.categories[i]);
-		      	}
+			scope.addToBag = function(){
+				scope.cart.push(scope.tea);
+			}
       		}
 	  };
 });

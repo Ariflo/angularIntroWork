@@ -8,6 +8,10 @@ h1{
 	color: orange;
 }
 
+h2{
+	float:left;
+}
+
 label{
 	display: inline;
 }
@@ -54,4 +58,8 @@ label{
 
 .priceLabel{
 	margin-left: 70%; 
+}
+
+.ordTotal{
+	float:right;
 }
