@@ -4,6 +4,7 @@ cartApp.controller('HomeController', ['$scope', '$http', '$parse', '$location', 
 		$scope.teas = data.data;
 		$scope.teaArr = [];
 		$scope.final = [];
+		
 
 		$scope.teas.forEach(function(tea){
 			var noStringArr = $parse(tea.categories);
@@ -11,7 +12,6 @@ cartApp.controller('HomeController', ['$scope', '$http', '$parse', '$location', 
 		});
 
 		$scope.teaArr.forEach(function(teaArray){
-
 			for(var i = 0; i<teaArray.length; i++){
 
 				if(!$scope.final.includes(teaArray[i])){

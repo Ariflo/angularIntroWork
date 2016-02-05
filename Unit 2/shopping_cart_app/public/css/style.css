@@ -8,16 +8,29 @@ h1{
 	color: orange;
 }
 
+label{
+	display: inline;
+}
+
 .pricer{
 	float: right;
 }
 
-label{
+.teaItem{
 	display: block;
+}
+
+.imgData{
+	width: 10%;
+}
+
+.teaData{
+	width: 100%;
 }
 
 .btn{
 	float:  right;
+	margin-bottom: 2%;
 }
 
 .quantityLabel{
@@ -27,4 +40,18 @@ label{
 
 .amt{
 	display: inline;
+}
+
+.searchName{
+	display: inline;
+	margin-left: 1%;
+}
+
+.data{
+	display: inline;
+	margin-left: 1px; 
+}
+
+.priceLabel{
+	margin-left: 70%; 
 }

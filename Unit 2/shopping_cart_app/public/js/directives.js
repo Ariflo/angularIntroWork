@@ -1,5 +1,15 @@
-cartApp.directive('gsAngularLogo', function() {
-	  return {	
-	    template: '<img src="https://lh6.googleusercontent.com/-TlY7amsfzPs/T9ZgLXXK1cI/AAAAAAABK-c/Ki-inmeYNKk/w749-h794/AngularJS-Shield-large.png">'
+cartApp.directive('mtCategories', function() {
+	  return {
+	  	scope:  {
+	  		categories: '=categories',
+	  	},
+	  	restrict: 'A',
+	  	templateUrl: '/templates/categories.html',
+	  	link: function(scope, element, attrs) {
+	  		var arr = [];
+		      	for(var i = 0; i<scope.categories.length; i++){
+		      		arr.push(scope.categories[i]);
+		      	}
+      		}
 	  };
 });

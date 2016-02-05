@@ -1,32 +1,31 @@
 <div>
-<label>Search by Category</label>
+<label class="searchName">Search by Category</label>
 <select>
 	<option ng-repeat="teaCategory in final track by $index ">{{teaCategory}}</option>
 </select> 
 
-<label>Search by name:</label>
+<label class="searchName">Search by name:</label>
 <input ng-model="searchText">
 
-<input type="submit" class="btn btn-danger" value="Checkout | {{Bag Empty!}}">
+<input type="submit" class="btn btn-danger" value="Checkout |">
 
 
 <table class=" table table-hover table-bordered">
   <tr>
     <th scope="col">Tea</th>
-    <th scope="col">Information</th>
-    <th scope="col" class="pricer">
-	    <label>Sort by Price: </label>
-		<select>
+    <th scope="col">Information
+	    <label class="priceLabel">Sort by Price: </label>
+		<select class="pricer">
 			<option>Highest</option>
 			<option>Lowest</option>
 		</select> 
     </th>
   </tr>
 
-  <tr>
-  	 <td><img src=""></td>
-  	 <td>
-  	  	<h4>Title of Item</h4> 
+  <tr ng-repeat="tea in teas track by $index">
+  	 <td class ="imgData"><img src="{{tea.imageUrl}}"></td>
+  	 <td class ="teaData">
+	  	<h4>{{tea.name}}</h4> 
 
   	  	<label class="quantityLabel">Quantity</label>
   	  	<select class="amt">
@@ -45,15 +44,27 @@
 
   	  	<button class='btn btn-warning'>Add to Bag</button>
   	  
-  	  	<label>Price:</label> 
-	  	<label>Caffine Scale:</label>
-	  	<label>Ingredients:</label> 
-	  	<label>Rating:</label>
-	  	<label>In Stock:</label>
-	  	<label>Categories:</label>
-  	  	<ul>
-  	  		<li></li>	
-  	  	</ul>
+  	  	<div class="teaItem">
+  	  		<label>Price:</label> <p class="data">{{tea.price}} </p>
+  	  	</div>
+  	  	<div class="teaItem">
+	  		<label>Caffine Scale:</label><p class="data">{{tea.caffeineScale}}</p>
+	  	</div>
+	  	<div class="teaItem">
+	  		<label>Ingredients:</label><p class="data">{{tea.ingredients}}</p>
+	  	</div>
+	  	<div class="teaItem">
+	  		<label>Rating:</label><p class="data">{{tea.rating}}</p> 
+	  	</div>
+	  	<div class="teaItem">
+	  		<label>In Stock:</label> <p class="data">{{tea.inStock}}</p>
+	  	</div>
+		<div class="teaItem">
+	  	  	<label >Categories:</label>
+	  	  	<ul ng-repeat = "category in categories">
+	  	  		<li>{{category}}</li>	
+	  	  	</ul>
+  	  	</div>
 
   	 </td>
   </tr>
