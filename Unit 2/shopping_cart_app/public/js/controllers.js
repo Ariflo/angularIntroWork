@@ -58,6 +58,10 @@ cartApp.controller('CartController', ['$scope', '$http',  '$location', 'passCart
 
 	$scope.saveCart = function(){
 		$scope.bool = !$scope.bool;
+		$scope.total = 0;
+		$scope.cart.forEach(function(item){
+			$scope.total += (item.price * item.quantity); 
+		});
 	}
 
 
