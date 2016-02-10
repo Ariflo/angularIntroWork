@@ -31,6 +31,9 @@ var paths = {
   ],
   distServer: [
     './dist/server/bin/www'
+  ],
+  tests: [
+    './tests/dashboard.test.js'
   ]
 };
 
@@ -81,6 +84,11 @@ gulp.task('nodemon', function (cb) {
   });
 });
 
+gulp.task('test', function(){
+  gulp.src(paths.tests)
+  .pipe(connect.reload());
+});
+
 gulp.task('watch', function() {
   gulp.watch(paths.scripts, ['lint']);
 });
@@ -126,7 +134,7 @@ gulp.task('connectDist', function (cb) {
 });
 
 // *** default task *** //
-gulp.task('default', ['browser-sync', 'watch'], function(){});
+gulp.task('default', ['browser-sync', 'watch', 'test'], function(){});
 
 // *** build task *** //
 gulp.task('build', function() {
