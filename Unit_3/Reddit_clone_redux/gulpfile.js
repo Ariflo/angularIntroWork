@@ -13,6 +13,8 @@ var minifyCSS = require('gulp-minify-css');
 var clean = require('gulp-clean');
 var concat = require('gulp-concat');
 var runSequence = require('run-sequence');
+var mocha = require('gulp-mocha');
+var util = require('gulp-util');
 
 
 /**
@@ -84,13 +86,18 @@ gulp.task('nodemon', function (cb) {
   });
 });
 
-gulp.task('test', function(){
-  gulp.src(paths.tests)
-  .pipe(connect.reload());
-});
-
 gulp.task('watch', function() {
   gulp.watch(paths.scripts, ['lint']);
+});
+
+gulp.task('test', function () {
+    return gulp.src(['test/**/*.js'], { read: false })
+        .pipe(mocha({ reporter: 'spec' }))
+        .on('error', util.log);
+});
+ 
+gulp.task('watch-test', function () {
+    gulp.watch(['views/**', 'public/**', 'server.js', 'framework/**', 'test/**'], ['test']);
 });
 
 gulp.task('clean', function() {
@@ -134,7 +141,7 @@ gulp.task('connectDist', function (cb) {
 });
 
 // *** default task *** //
-gulp.task('default', ['browser-sync', 'watch', 'test'], function(){});
+gulp.task('default', ['browser-sync', 'watch', 'test','watch-test'], function(){});
 
 // *** build task *** //
 gulp.task('build', function() {

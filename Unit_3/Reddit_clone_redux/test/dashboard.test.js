@@ -11,15 +11,17 @@ beforeEach(function () {
 
 describe('the dashboard', function(){
 
-	it("load the dash", function(done){
+	it("should load the dash", function(done){
 		testSession.get('/')
 		.expect(200)
 		.end(function(err, res){
 			if(err){
 				return done(err);
 			}
-			expect(res.text).to.contain('booh');
+			expect(res.text).to.contain('Gal');
+			done();
 		})
+
 	})
 
 })
