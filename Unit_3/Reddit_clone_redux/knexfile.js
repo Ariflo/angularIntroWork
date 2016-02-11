@@ -9,6 +9,13 @@ module.exports = {
     }
   },
 
+    test: {
+    client: 'postgres',
+    connection: {
+      database: 'reddit_test_DB'
+    }
+  },
+
   staging: {
     client: 'postgresql',
     connection: {

@@ -33,9 +33,6 @@ var paths = {
   ],
   distServer: [
     './dist/server/bin/www'
-  ],
-  tests: [
-    './tests/dashboard.test.js'
   ]
 };
 
@@ -97,7 +94,7 @@ gulp.task('test', function () {
 });
  
 gulp.task('watch-test', function () {
-    gulp.watch(['views/**', 'public/**', 'server.js', 'framework/**', 'test/**'], ['test']);
+    gulp.watch(['views/**', 'public/**', 'server.js', 'routes/**', 'test/**'], ['test']);
 });
 
 gulp.task('clean', function() {
