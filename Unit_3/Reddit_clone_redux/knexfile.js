@@ -12,7 +12,7 @@ module.exports = {
     test: {
     client: 'postgres',
     connection: {
-      database: 'reddit_test_DB'
+      database: 'reddit_test_db'
     }
   },
 
