@@ -1,4 +1,4 @@
-process.env.PORT = 5000;
+process.env.PORT = 8000;
 process.env.NODE_ENV = 'test';
 
 var request = require('supertest')
@@ -10,9 +10,9 @@ beforeEach(function () {
   testSession = session(app);
 })
 
-describe('the dashboard', function(){
+describe('the homepage', function(){
 
-	it("should load the dash", function(done){
+	it("should load", function(done){
 		testSession.get('/')
 		.expect(200)
 		.end(function(err, res){
@@ -23,6 +23,13 @@ describe('the dashboard', function(){
 			done();
 		})
 
+	})	
+
+	it("should store users, posts, and comments in a SQL database", function(done){
+		
+
 	})
+
+
 
 })
