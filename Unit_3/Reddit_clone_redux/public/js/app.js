@@ -1,0 +1,3 @@
+angular.module('redditApp', ['ngRoute', 'ngAnimate', 'ngResource']).controller('homeController', ['$scope', 'greeter', function($scope, greeter) {
+  // ...
+}]);
