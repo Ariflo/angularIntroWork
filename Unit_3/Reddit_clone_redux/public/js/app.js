@@ -4,7 +4,12 @@ redditApp.config(function($routeProvider, $locationProvider){
 	$routeProvider
 	.when('/',{
 		templateUrl: 'partials/home.html',
-        		controller: 'HomeController'
+        		controller: 'homeController'
+	})	
+
+	.when('/user/:id',{
+		templateUrl: 'partials/home.html',
+        		controller: 'homeController'
 	})	
 
 	.when('/new/error',{

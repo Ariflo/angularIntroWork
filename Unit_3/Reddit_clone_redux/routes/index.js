@@ -5,7 +5,7 @@ var locus = require('locus');
 var bcrypt = require('bcrypt');
 
 router.get('/', function(req, res, next) {
-  res.render('index');
+  res.render('index',  {username: 'to Redditer'});
 });
 
 router.post('/new', function(req, res, next) {
@@ -17,8 +17,8 @@ router.post('/new', function(req, res, next) {
 
   				bcrypt.hash(req.body.password, salt, function(err, hash){
 
-  					knex('users').insert({username: req.body.username, password: hash}).then(function(){
-  						res.redirect('/#/');
+  					knex('users').insert({username: req.body.username, password: hash}).returning('id').then(function(id){
+  						res.redirect('/#/user/'+ id);
   					});
   				});
   			});
