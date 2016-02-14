@@ -7,7 +7,7 @@ redditApp.config(function($routeProvider, $locationProvider){
         		controller: 'HomeController'
 	})	
 
-	.when('/new',{
+	.when('/new/error',{
 		templateUrl: 'partials/userCopyError.html',
         		controller: 'errorDisplayController'
 	})

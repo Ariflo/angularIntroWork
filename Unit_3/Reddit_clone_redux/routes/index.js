@@ -10,8 +10,8 @@ router.get('/', function(req, res, next) {
 
 router.post('/new', function(req, res, next) {
   	knex('users').where({username: req.body.username}).first().then(function(user){
-  		if(user){
-  			res.redirect('/#/new');
+  		if(user || req.body.password !== req.body.pwConfirm){
+  			res.redirect('/#/new/error');
   		}else{
   			bcrypt.genSalt(10, function(err, salt){
 
