@@ -3,9 +3,11 @@
   <head>
     <title>Redditer</title>
    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-   	<link rel="stylesheet" type="text/css" href="/css/style.css">
+   	<link rel="stylesheet" type="text/css" href="/css/main.css">
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js" charset="utf-8"></script>
    	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+   	<script rel='text/javascripts'  src="/css/bootstrap/js/bootstrap.js"></script>
    	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-animate.js"></script>
    	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-route.js"></script>
    	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-resource.js"></script>
@@ -40,8 +42,67 @@
           		<option value="title">Sort by Title</option>
           	</select>
       </div><!-- /.navbar-collapse -->
+      <div class="nav navbar-nav navbar-right">
+                <a class="navbar-brand" data-toggle="modal" href="#"  data-target="#signUpModal">Sign-Up</a>
+      	    <a class="navbar-brand" data-toggle="modal" href="#"  data-target="#signInModal">Sign-In</a>
+          </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
+
+    <!-- Modal -->
+    <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Welcome to Redditer</h4>
+            <h6 class="modal-title" id="myModalLabel2">Please enter your information below</h6>
+          </div>
+            <form id="signupForm" action="/" method="POST">
+          <div class="modal-body">
+                <label>Username</label>
+                <input id="name" class="form-control" type="text" name="name" placeholder="Name" required>
+
+                <label>Password</label>
+                <input id="password" class="form-control" type="password" name="password" placeholder="Password"  required>
+
+                <label>Password Confirmation</label>
+                <input id="pwConfirm" class="form-control" type="password" name="pwConfirm" placeholder="Password confirm" required>   
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <input id="signUpSubmitBtn" class="btn btn-primary" type="submit" value="Submit">
+          </div>
+            </form> 
+        </div>
+      </div>
+    </div> 
+
+
+     <!-- Modal -->
+    <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Welcome to Redditer</h4>
+            <h6 class="modal-title" id="myModalLabel2">Please Sign-in below</h6>
+          </div>
+  	        <form id="signupForm" action="/" method="POST">
+  		    <div class="modal-body">
+      		          <label>Username</label>
+      		          <input id="username" class="form-control" type="text" name="username" placeholder="Username" required>		         
+      		          <label>Password</label>
+      		          <input id="password" class="form-control" type="password" name="password" placeholder="Password" required>
+  		    </div>
+  		    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input id="signInSubmitBtn" class="btn btn-primary" type="submit" value="Submit">
+  		    </div>
+  	        </form> 
+        </div>
+      </div>
+    </div>
   	<div ng-view></div>
   </body>
 </html>

@@ -1,6 +1,6 @@
 var cartApp = angular.module('cartApp', ['ngRoute', 'ngAnimate', 'ngResource']);
 
-cartApp.config(function($routeProvider, $locationProvider) {
+cartApp.config(function(($routeProvider, $locationProvider)) {
     $routeProvider
       .when('/', {
         templateUrl: 'partials/home.html',
@@ -12,6 +12,6 @@ cartApp.config(function($routeProvider, $locationProvider) {
         controller: 'CartController'
       })      
 
-      $locationProvider.html5Mode( false );
+      $locationProvider.html5Mode( false );()
 });
 

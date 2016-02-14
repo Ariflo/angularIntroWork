@@ -1,0 +1,3 @@
+redditApp.controller('homeController', ['$scope', 'greeter', function($scope, greeter) {
+  // ...
+}]);
