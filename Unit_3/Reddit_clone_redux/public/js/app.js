@@ -5,5 +5,10 @@ redditApp.config(function($routeProvider, $locationProvider){
 	.when('/',{
 		templateUrl: 'partials/home.html',
         		controller: 'HomeController'
+	})	
+
+	.when('/new',{
+		templateUrl: 'partials/userCopyError.html',
+        		controller: 'errorDisplayController'
 	})
 });
