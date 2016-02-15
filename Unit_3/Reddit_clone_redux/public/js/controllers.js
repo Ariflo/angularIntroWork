@@ -1,4 +1,4 @@
-redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location', '$routeParams', 'User', function($scope, $http, $parse, $location, $routeParams, User) {
+redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location', '$routeParams', 'User', 'Post', function($scope, $http, $parse, $location, $routeParams, User, Post) {
 	$scope.posts = []; 
 	$scope.newPostData = {};
 	$scope.show = false;
@@ -8,7 +8,7 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 		$scope.user = user;
 		  }, function(err){ 
 		   	console.log(err);
-	});
+	});	
 
     	$scope.postSubmit = function(form){
 		$scope.show = true;
@@ -16,7 +16,11 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 			$scope.number = 0;
 			$scope.posts.push({"title": $scope.newPostData.title, "author": $scope.newPostData.author, "image": $scope.newPostData.image, "comment": $scope.newPostData.comment, "date": new Date(), "rating": $scope.number, "comments": [], "addComment": {}, "commentOn": false, "newCommentOn": false});
 		};
-		$scope.newPostData = {};	
+		$scope.newPostData = {};
+
+		Post.save({user_id: $routeParams.id, post: $scope.posts}, function(){
+			$location.path('/');
+		});	
 	};
 
 	$scope.postComment = function(form, post){

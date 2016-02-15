@@ -1,6 +1,7 @@
 var express = require('express');
 var apiRouter = express.Router();
 var knex = require('../db/knex');
+var locus = require('locus');
 
 apiRouter.get('/user/:id', function(req, res, next) {
 	knex('users').where({id:req.params.id}).first().then(function(user) {
@@ -8,9 +9,16 @@ apiRouter.get('/user/:id', function(req, res, next) {
 	});
 });
 
-apiRouter.get('/:id', function(req, res, next) {
-	// knex.select().table('authors').where({id: req.params.id}).then(function(authors) {
-	// 	res.json(authors);
+apiRouter.get('/user/:id/post', function(req, res, next) {
+	eval(locus);
+	// knex.select().table('posts').where({id: req.params.id}).first().then(function(post) {
+	// 	if(post){
+	// 		res.redirect('/#/');
+	// 	}else{
+	// 		knex('posts').insert({user_id: req.body., password: hash}).returning('id').then(function(id){
+ //  						res.redirect('/#/user/'+ id);
+ //  			});
+	// 	}
 	// });
 });
 
