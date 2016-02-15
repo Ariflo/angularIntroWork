@@ -2,24 +2,22 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 	$scope.posts = []; 
 	$scope.newPostData = {};
 	$scope.show = false;
-	$scope.reveal = true;
+	$scope.reveal = false;
 
 	User.get({id: $routeParams.id}, function(user){
 		$scope.user = user;
-
 		  }, function(err){ 
 		   	console.log(err);
 	});
 
-
-	$scope.postSubmit = function(form){
+    	$scope.postSubmit = function(form){
 		$scope.show = true;
 		if (form.$valid) {
 			$scope.number = 0;
 			$scope.posts.push({"title": $scope.newPostData.title, "author": $scope.newPostData.author, "image": $scope.newPostData.image, "comment": $scope.newPostData.comment, "date": new Date(), "rating": $scope.number, "comments": [], "addComment": {}, "commentOn": false, "newCommentOn": false});
 		};
-		$scope.newPostData = {};
-	}
+		$scope.newPostData = {};	
+	};
 
 	$scope.postComment = function(form, post){
 		$scope.show = true;
