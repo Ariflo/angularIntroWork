@@ -2,7 +2,7 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 	$scope.posts = []; 
 	$scope.newPostData = {};
 	$scope.show = false;
-	$scope.reveal = false;
+	$scope.reveal = true;
 
 	User.get({id: $routeParams.id}, function(user){
 		$scope.user = user;
