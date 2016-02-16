@@ -1,4 +1,4 @@
-redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location', '$routeParams', 'User', 'Post', function($scope, $http, $parse, $location, $routeParams, User, Post) {
+redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location', '$routeParams', 'User', 'SignInFormReveal', 'SignUpFormReveal', function($scope, $http, $parse, $location, $routeParams, User, SignInFormReveal, SignUpFormReveal) {
 	$scope.posts = []; 
 	$scope.newPostData = {};
 	$scope.show = false;
@@ -54,6 +54,26 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 
 	$scope.showStuff = function(){
 		$scope.reveal = !$scope.reveal; 
+	}
+
+
+	$scope.showSignInForm = function(){
+		SignInFormReveal.getStatus(true);		
+	}		
+
+	$scope.showSignUpForm = function(){
+		SignUpFormReveal.getStatus(true);
 	}	
+}]);
+
+redditApp.controller('errorDisplayController', ['$scope', '$http', '$parse', '$location', '$routeParams', 'SignInFormReveal', 'SignUpFormReveal', function($scope, $http, $parse, $location, $routeParams, SignInFormReveal, SignUpFormReveal) {
+	
+	$scope.signin = !SignInFormReveal.sendStatus()[0];
+	
+	$scope.signup = SignUpFormReveal.sendStatus()[0];
+	
+	
+	SignInFormReveal.clearStatus();
+	SignUpFormReveal.clearStatus();
 
 }]);

@@ -73,7 +73,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <input id="signUpSubmitBtn" class="btn btn-primary" type="submit" value="Submit">
+              <input ng-click="showSignUpForm()"  id="signUpSubmitBtn" class="btn btn-primary" type="submit" value="Submit">
             </div>
               </form> 
           </div>
@@ -89,7 +89,7 @@
               <h4 class="modal-title" id="myModalLabel">Welcome to Redditer</h4>
               <h6 class="modal-title" id="myModalLabel2">Please Sign-in below</h6>
             </div>
-              <form id="signupForm" action="/" method="POST">
+              <form id="signupForm" action="/new" method="POST">
             <div class="modal-body">
                       <label>Username</label>
                       <input id="username" class="form-control" type="text" name="username" placeholder="Username" required>             
@@ -98,7 +98,7 @@
             </div>
             <div class="modal-footer">
                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                          <input id="signInSubmitBtn" class="btn btn-primary" type="submit" value="Submit">
+                          <input ng-click="showSignInForm()" id="signInSubmitBtn" class="btn btn-primary" type="submit" value="Submit">
             </div>
               </form> 
           </div>
