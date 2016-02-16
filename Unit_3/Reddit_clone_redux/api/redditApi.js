@@ -9,7 +9,7 @@ apiRouter.get('/user/:id', function(req, res, next) {
 	});
 });
 
-apiRouter.get('/user/:id/post', function(req, res, next) {
+apiRouter.get('', function(req, res, next) {
 	eval(locus);
 	// knex.select().table('posts').where({id: req.params.id}).first().then(function(post) {
 	// 	if(post){
