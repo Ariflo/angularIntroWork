@@ -1,6 +1,6 @@
 <div>
  <!-- Modal -->
-  <div ng-show= 'signup' ng-class="{off: modal fade}" class="modal show" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal show" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -33,32 +33,6 @@
       </div>
     </div>
   </div>
-
-   <!-- Modal -->
-  <div ng-show= 'signin'  ng-class="{off: modal fade}" class="modal show" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" ng-model="off" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Welcome to Redditer</h4>
-          <h6 class="modal-title" id="myModalLabel2">Please Sign-in below</h6>
-        </div>
-          <form id="signupForm" action="/new" method="POST">
-        <div class="modal-body">
-        <div class="form-group has-error">
-                  <label for="inputError1">Username</label>
-                  <input id="inputError1" class="form-control" type="text" name="username" placeholder="Username" required>             
-                  <label for="inputError2">Password</label>
-                  <input id="inputError2" class="form-control" type="password" name="password" placeholder="Password" required>
-                  <p id="emailCopyErrMsg">E-mail/password are incorrect</p>
-        </div>
-         </div>   
-        <div class="modal-footer">
-                      <button ng-model="off" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      <input id="signInSubmitBtn" class="btn btn-primary" type="submit" value="Submit">
-        </div>
-          </form> 
-      </div>
-    </div>
   </div>
-</div>
+
+   

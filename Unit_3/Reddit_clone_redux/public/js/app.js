@@ -14,6 +14,11 @@ redditApp.config(function($routeProvider, $locationProvider){
 
 	.when('/new/error',{
 		templateUrl: 'partials/userCopyError.html',
-        		controller: 'errorDisplayController'
+        		controller: 'homeController'
+	})	
+
+	.when('/new/sign-in-error',{
+		templateUrl: 'partials/signInError.html',
+        		controller: 'homeController'
 	})
 });

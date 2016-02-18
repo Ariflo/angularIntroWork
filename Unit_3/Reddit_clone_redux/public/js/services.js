@@ -4,44 +4,40 @@ redditApp.service('User', ["$resource", function ($resource) {
 
 redditApp.service('SignInFormReveal', [ function () {
     
-    var statusArray = [];
-    var getStatus = function(status){
-    	statusArray.push(status);
-    }    
+    // var statusArray = [];
+    // var Status = function(){
+    // 	return true;
+    // }    
 
-    var sendStatus = function(){
-    	return statusArray;
-    }  
+    // // var sendStatus = function(){
+    // // 	return statusArray;
+    // // }  
 
-    var clearStatus = function(){
-    	statusArray = [];
-    }
+    // // var clearStatus = function(){
+    // // 	statusArray = [];
+    // // }
 
     return{
-    	getStatus: getStatus,
-    	sendStatus:sendStatus,
-    	clearStatus: clearStatus
+    	Status: true
     }
 }]);
 
 redditApp.service('SignUpFormReveal', [ function () {
     
     var statusArray = [];
-    var getStatus = function(status){
-    	statusArray.push(status);
+    var Status = function(){
+        return true;
     }    
 
-    var sendStatus = function(){
-    	return statusArray;
-    }  
+    // var sendStatus = function(){
+    //  return statusArray;
+    // }  
 
-    var clearStatus = function(){
-    	statusArray = [];
-    }
+    // var clearStatus = function(){
+    //  statusArray = [];
+    // }
 
     return{
-    	getStatus: getStatus,
-    	sendStatus:sendStatus,
-    	clearStatus: clearStatus
+        Status: Status
     }
 }]);
