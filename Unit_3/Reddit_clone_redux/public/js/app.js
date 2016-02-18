@@ -8,9 +8,9 @@ redditApp.config(function($routeProvider, $locationProvider){
 	})	
 
 	.when('/user/:id',{
-		templateUrl: 'partials/home.html',
+		templateUrl: 'partials/login.html',
         		controller: 'homeController'
-	})	
+	})
 
 	.when('/new/error',{
 		templateUrl: 'partials/userCopyError.html',

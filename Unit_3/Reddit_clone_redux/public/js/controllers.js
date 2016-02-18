@@ -6,8 +6,8 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 
 	User.get({id: $routeParams.id}, function(user){
 		$scope.user = user;
-		  }, function(err){ 
-		   	console.log(err);
+		}, function(err){ 
+		console.log(err);
 	});	
 
     	$scope.postSubmit = function(form){
@@ -28,8 +28,8 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 		if (form.$valid) {
 			post.comments.push(post.addComment);
 			post.addComment = {};
-
 		};
+
 		$scope.newPostData = {};
 	}
 	
@@ -44,7 +44,6 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 	$scope.toggleComments = function(post) {
 		post.commentOn= !post.commentOn;
 		post.newCommentOn = false;
-
 	}
 
 	$scope.toggleNewComment = function(post) {
