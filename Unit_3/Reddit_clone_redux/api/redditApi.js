@@ -10,7 +10,18 @@ apiRouter.get('/user/:id', function(req, res, next) {
 });
 
 apiRouter.post('/posts', function(req, res, next) {
-	knex('posts').insert
+	knex('posts')
+	    .insert(
+	    	{user_id: req.body.userId,
+	    	 title:req.body.title,
+	    	 img_url:req.body.image,
+	    	 post_time: new Date(),
+	    	 post_body:req.body.post_body,
+	    	 post_score: 0
+	    })
+	    .then(function(){
+	    	res.redirect('/#/user/' + req.body.userId);
+	    })
 });
 
 module.exports = apiRouter;

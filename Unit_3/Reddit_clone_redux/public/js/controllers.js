@@ -14,21 +14,23 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
     	$scope.postSubmit = function(form){
 		$scope.show = true;
 		if (form.$valid) {
-			$scope.number = 0;
-			$scope.posts.push({"title": $scope.newPostData.title,
-			 		        "image": $scope.newPostData.image, 
-			 		        "comment": $scope.newPostData.comment, 
-			 		        "date": new Date(), "rating": $scope.number, 
-			 		        "comments": [], 
-			 		        "addComment": {}, 
-			 		        "commentOn": false, 
-			 		        "newCommentOn": false});
+				$scope.number = 0;
+				$scope.posts.push({"title": $scope.newPostData.title,
+				 		        "image": $scope.newPostData.image, 
+				 		        "post_body": $scope.newPostData.post_body, 
+				 		        "date": new Date(), 
+				 		        "rating": $scope.number, 
+				 		        "comments": [], 
+				 		        "addComment": {}, 
+				 		        "commentOn": false, 
+				 		        "newCommentOn": false});
 
 				$scope.newPostData.userId = $scope.user.id;
+				
 				Post.save($scope.newPostData);
 
 				};
-		$scope.newPostData = {};	
+				$scope.newPostData = {};	
 	};
 
 	$scope.postComment = function(form, post){

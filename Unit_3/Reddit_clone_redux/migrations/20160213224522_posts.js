@@ -2,7 +2,11 @@ exports.up = function(knex, Promise) {
     	return knex.schema.createTable('posts', function(table){
 		table.increments(); //create id SERIAL PRIMARY KEY
 		table.string('user_id');
-		table.text('post');
+		table.string('title');
+		table.string('img_url');
+		table.timestamp('post_time');
+		table.text('post_body');
+		table.integer('post_score');
 	});
 };
 

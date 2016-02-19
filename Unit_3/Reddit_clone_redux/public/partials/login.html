@@ -40,7 +40,7 @@
 			    <input type="url" ng-model="newPostData.image" name="image" class="form-control" id="image" placeholder="http://jpg.com.jpg"required>	
 
 			    <label>Post Text</label>
-			    <input type="text" ng-model="newPostData.comment" name="post"  class="form-control" id="comment" placeholder="Place text here..." required><br>
+			    <input type="text" ng-model="newPostData.post_body" name="post"  class="form-control" id="comment" placeholder="Place text here..." required><br>
 	 	<input type="submit" class="btn btn-success"  value="POST">
 	 	</div>
 	</form>
@@ -57,7 +57,7 @@
 				 <strong>{{post.title}}  |  </strong><span ng-style="{'color':'green'}" ng-click="ratingUp(post)" id="thumbs-up" class="glyphicon glyphicon-thumbs-up pointer"></span><span ng-style="{'color':'red'}" ng-click="ratingDown(post)" id="thumbs-down" class="glyphicon glyphicon-thumbs-down pointer"></span><span ng-class="{greenNum:  post.rating > 0 , redNum: post.rating < 0}">{{post.rating}}</span>
 				 </div>
 				<h6 class="text-right">by {{user.username}}</h6>
-				<p class="commentBox">{{post.comment}}</p>
+				<p class="commentBox">{{post.post_body}}</p>
 				<p class="noselect"><span class="glyphicon glyphicon-calendar"></span> {{post.date | amCalendar}}
 				| <span ng-click="toggleComments(post)" class="pointer"><span class="glyphicon glyphicon-comment"></span><ng-pluralize count="post.comments.length"
                 	 when="{'one': ' {} Comment',
