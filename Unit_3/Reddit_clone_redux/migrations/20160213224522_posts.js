@@ -2,7 +2,7 @@ exports.up = function(knex, Promise) {
     	return knex.schema.createTable('posts', function(table){
 		table.increments(); //create id SERIAL PRIMARY KEY
 		table.string('user_id');
-		table.string('post');
+		table.text('post');
 	});
 };
 

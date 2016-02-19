@@ -30,27 +30,8 @@
 </nav>
 
 <h1>Welcome {{user.username}}</h1>
-<a ng-click="showStuff()" >Post<span class="glyphicon glyphicon-plus"></span></a>
 	
-	<form ng-if="reveal" name="postForm" ng-submit="postSubmit(postForm)" class="slide"> 
-	 	<div class="form-group">
-	 	    	    <label for="Title">Title</label>
-			    <input type="text" ng-model="newPostData.title" name="title" class="form-control" id="name" placeholder="Name" required>	
-
-			    <label for="email">Author</label>
-			    <input type="text" ng-model="newPostData.author" name="author" class="form-control" id="author" placeholder={{user.username}} required>		 
-
-			    <label for="image">Image</label>
-			    <input type="url" ng-model="newPostData.image" name="image" class="form-control" id="image" placeholder="http://url.com"required>	
-
-			    <label for="comment">Comment</label>
-			    <input type="comment" ng-model="newPostData.comment" name="comment"  class="form-control" id="comment" placeholder="comments" required><br>
-	 	<input type="submit" class="btn btn-success"  value="POST">
-	 	</div>
-	</form>
-
-
-	<div class="container" ng-if="show" ng-repeat = "post in posts | filter:searchText | orderBy: currentOrderBy">
+	<div class="container" ng-repeat = "post in posts | filter:searchText | orderBy: currentOrderBy">
 		<div class="row">
 			<div class = "col-xs-2" >
 				<img class="ico" src="{{post.image}}">

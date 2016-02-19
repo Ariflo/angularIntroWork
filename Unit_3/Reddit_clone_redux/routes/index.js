@@ -45,6 +45,24 @@ router.get('/user', function(req, res, next) {
       });
 });
 
+router.post('/posts', function(req, res, next) {
+    // knex('users').where({username: req.body.username}).first().then(function(user){
+    //   if(user || req.body.password !== req.body.pwConfirm){
+    //     res.redirect('/#/new/error');
+    //   }else{
+    //     bcrypt.genSalt(10, function(err, salt){
+
+    //         bcrypt.hash(req.body.password, salt, function(err, hash){
+
+    //         knex('users').insert({username: req.body.username, password: hash}).returning('id').then(function(id){
+    //           res.redirect('/#/user/'+ id);
+    //         });
+    //       });
+    //     });
+    //   }
+    // });
+});
+
 router.get('/signout', function(req, res){
   req.session = null;
   res.redirect('/');

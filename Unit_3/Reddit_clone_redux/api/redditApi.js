@@ -9,4 +9,8 @@ apiRouter.get('/user/:id', function(req, res, next) {
 	});
 });
 
+apiRouter.post('/posts', function(req, res, next) {
+	knex('posts').insert
+});
+
 module.exports = apiRouter;

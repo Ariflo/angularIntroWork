@@ -33,17 +33,14 @@
 	
 	<form ng-if="reveal" name="postForm" ng-submit="postSubmit(postForm)" class="slide"> 
 	 	<div class="form-group">
-	 	    	    <label for="Title">Title</label>
-			    <input type="text" ng-model="newPostData.title" name="title" class="form-control" id="name" placeholder="Name" required>	
+	 	    	    <label>Title</label>
+			    <input type="text" ng-model="newPostData.title" name="title" class="form-control" id="name" placeholder="Name" required>			 
 
-			    <label for="email">Author</label>
-			    <input type="text" ng-model="newPostData.author" name="author" class="form-control" id="author" placeholder={{user.username}} required>		 
+			    <label>Image</label>
+			    <input type="url" ng-model="newPostData.image" name="image" class="form-control" id="image" placeholder="http://jpg.com.jpg"required>	
 
-			    <label for="image">Image</label>
-			    <input type="url" ng-model="newPostData.image" name="image" class="form-control" id="image" placeholder="http://url.com"required>	
-
-			    <label for="comment">Comment</label>
-			    <input type="comment" ng-model="newPostData.comment" name="comment"  class="form-control" id="comment" placeholder="comments" required><br>
+			    <label>Post Text</label>
+			    <input type="text" ng-model="newPostData.comment" name="post"  class="form-control" id="comment" placeholder="Place text here..." required><br>
 	 	<input type="submit" class="btn btn-success"  value="POST">
 	 	</div>
 	</form>
@@ -59,7 +56,7 @@
 				 <div class="titleThumb noselect">
 				 <strong>{{post.title}}  |  </strong><span ng-style="{'color':'green'}" ng-click="ratingUp(post)" id="thumbs-up" class="glyphicon glyphicon-thumbs-up pointer"></span><span ng-style="{'color':'red'}" ng-click="ratingDown(post)" id="thumbs-down" class="glyphicon glyphicon-thumbs-down pointer"></span><span ng-class="{greenNum:  post.rating > 0 , redNum: post.rating < 0}">{{post.rating}}</span>
 				 </div>
-				<h6 class="text-right">by {{post.author}}</h6>
+				<h6 class="text-right">by {{user.username}}</h6>
 				<p class="commentBox">{{post.comment}}</p>
 				<p class="noselect"><span class="glyphicon glyphicon-calendar"></span> {{post.date | amCalendar}}
 				| <span ng-click="toggleComments(post)" class="pointer"><span class="glyphicon glyphicon-comment"></span><ng-pluralize count="post.comments.length"

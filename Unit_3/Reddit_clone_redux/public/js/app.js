@@ -21,4 +21,5 @@ redditApp.config(function($routeProvider, $locationProvider){
 		templateUrl: 'partials/signInError.html',
         		controller: 'homeController'
 	})
+
 });

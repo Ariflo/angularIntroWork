@@ -47,6 +47,7 @@ body > div > form > div {
 .commentBox{
 	height: 30px;
 	width: 100%;
+	word-wrap: break-word;
 	overflow-x:hidden;
 	overflow-y: scroll;
 }
