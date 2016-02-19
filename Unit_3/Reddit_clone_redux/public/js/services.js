@@ -5,3 +5,7 @@ redditApp.service('User', ["$resource", function ($resource) {
 redditApp.service('Post', ["$resource", function ($resource) {
     return $resource('/api/posts');
 }]);
+
+redditApp.service('Comment', ["$resource", function ($resource) {
+    return $resource('/api/comments');
+}]);

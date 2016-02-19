@@ -1,5 +1,5 @@
-redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location', '$routeParams', 'User', 'Post' , 
-	                                     function($scope,  $http,  $parse,  $location,   $routeParams,   User,  Post) {
+redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location', '$routeParams', 'User', 'Post' , 'Comment' ,
+	                                     function($scope,  $http,  $parse,  $location,   $routeParams,   User,  Post, Comment) {
 	$scope.posts = []; 
 	$scope.newPostData = {};
 	$scope.show = false;
@@ -37,9 +37,14 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 		$scope.show = true;
 		if (form.$valid) {
 			post.comments.push(post.addComment);
-			post.addComment = {};
-		};
 
+			post.addComment.userId = $scope.user.id;
+			Comment.save(post.addComment);
+
+			post.addComment = {};
+			
+		};
+	
 		$scope.newPostData = {};
 	}
 	
@@ -54,6 +59,8 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 	$scope.toggleComments = function(post) {
 		post.commentOn= !post.commentOn;
 		post.newCommentOn = false;
+
+		//#TODO: //call specific post from toggle of comments
 	}
 
 	$scope.toggleNewComment = function(post) {
