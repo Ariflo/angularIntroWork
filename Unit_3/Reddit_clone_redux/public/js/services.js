@@ -7,5 +7,5 @@ redditApp.service('Post', ["$resource", function ($resource) {
 }]);
 
 redditApp.service('Comment', ["$resource", function ($resource) {
-    return $resource('/api/comments');
+    return $resource('/api/comments', {comment_time: "@comment_time"});
 }]);

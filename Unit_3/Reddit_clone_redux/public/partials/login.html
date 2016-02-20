@@ -32,6 +32,7 @@
 <a ng-click="showStuff()" >Post<span class="glyphicon glyphicon-plus"></span></a>
 	
 	<form ng-if="reveal" name="postForm" ng-submit="postSubmit(postForm)" class="slide"> 
+
 	 	<div class="form-group">
 	 	    	    <label>Title</label>
 			    <input type="text" ng-model="newPostData.title" name="title" class="form-control" id="name" placeholder="Name" required>			 
@@ -43,6 +44,7 @@
 			    <input type="text" ng-model="newPostData.post_body" name="post"  class="form-control" id="comment" placeholder="Place text here..." required><br>
 	 	<input type="submit" class="btn btn-success"  value="POST">
 	 	</div>
+
 	</form>
 
 
@@ -53,6 +55,7 @@
 			</div>
 			
 			<div class="col-xs-10">
+
 				 <div class="titleThumb noselect">
 				 <strong>{{post.title}}  |  </strong><span ng-style="{'color':'green'}" ng-click="ratingUp(post)" id="thumbs-up" class="glyphicon glyphicon-thumbs-up pointer"></span><span ng-style="{'color':'red'}" ng-click="ratingDown(post)" id="thumbs-down" class="glyphicon glyphicon-thumbs-down pointer"></span><span ng-class="{greenNum:  post.rating > 0 , redNum: post.rating < 0}">{{post.rating}}</span>
 				 </div>
@@ -65,6 +68,7 @@
 				</ng-pluralize>
 				</span>
 				| <span ng-click="toggleNewComment(post)" class="pointer"> <span class="glyphicon glyphicon-pencil"></span> New Comment</span></p>
+				
 			</div>
 		</div>
 		

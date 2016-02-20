@@ -27,7 +27,9 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 
 				$scope.newPostData.userId = $scope.user.id;
 				
-				Post.save($scope.newPostData);
+				Post.save($scope.newPostData, function(data){
+					$scope.postid = data;
+				});
 
 				};
 				$scope.newPostData = {};	
@@ -39,6 +41,7 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 			post.comments.push(post.addComment);
 
 			post.addComment.userId = $scope.user.id;
+			post.addComment.postId = $scope.postid;
 			Comment.save(post.addComment);
 
 			post.addComment = {};
@@ -59,8 +62,6 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 	$scope.toggleComments = function(post) {
 		post.commentOn= !post.commentOn;
 		post.newCommentOn = false;
-
-		//#TODO: //call specific post from toggle of comments
 	}
 
 	$scope.toggleNewComment = function(post) {

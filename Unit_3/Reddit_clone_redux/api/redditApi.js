@@ -19,17 +19,17 @@ apiRouter.post('/posts', function(req, res, next) {
 	    	 post_body:req.body.post_body,
 	    	 post_score: 0
 	    })
-	    .then(function(){
-	    	res.redirect('/#/user/' + req.body.userId);
+	    .returning('id')
+	    .then(function(id){
+	    	res.json({id:id[0]})
 	    });
 });
 
 apiRouter.post('/comments', function(req, res, next) {
-	knex('posts').where({}).fi
 	knex('comments')
 	    .insert(
 	    	{user_id: req.body.userId,
-
+	    	 post_id: req.body.postId.id,
 	    	 comment_body:req.body.comment,
 	    	 comment_time: new Date(),
 	    	 comment_score: 0
