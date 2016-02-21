@@ -1,5 +1,5 @@
-redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location', '$routeParams', 'User', 'Post' , 'Comment' ,
-	                                     function($scope,  $http,  $parse,  $location,   $routeParams,   User,  Post, Comment) {
+redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location', '$routeParams', 'User', 'Post' , 'Comment' ,'Postit',
+	                                     function($scope,  $http,  $parse,  $location,   $routeParams,   User,  Post, Comment, Postit) {
 	$scope.newPostData = {};
 	$scope.show = false;
 	$scope.reveal = false;
@@ -11,6 +11,7 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 	});	
 
 	Post.get(function(posts){
+		$scope.show = true;
 		$scope.posts = posts.data;
 	});
 
@@ -43,11 +44,15 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 	}
 	
 	$scope.ratingUp = function(post){
-		post.rating += 1;
+		Postit.update({id:post.id}, function(data){
+			post.post_score = data.score;
+		});
 	}
 
 	$scope.ratingDown = function(post){
-		post.rating -= 1;
+		Postit.update({id:post.id}, function(data){
+			post.post_score = data.score;
+		});
 	}
 
 	$scope.toggleComments = function(post) {

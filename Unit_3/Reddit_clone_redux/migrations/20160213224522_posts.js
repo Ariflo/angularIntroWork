@@ -1,7 +1,7 @@
 exports.up = function(knex, Promise) {
     	return knex.schema.createTable('posts', function(table){
 		table.increments(); //create id SERIAL PRIMARY KEY
-		table.integer('user_id').references('id').inTable('users');
+		table.integer('user_id');
 		table.string('title');
 		table.string('img_url');
 		table.timestamp('post_time');

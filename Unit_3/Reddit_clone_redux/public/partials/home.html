@@ -39,7 +39,7 @@
 			
 			<div class="col-xs-10">
 				 <div class="titleThumb noselect">
-				 <strong>{{post.title}}  |  </strong><span ng-style="{'color':'green'}" ng-click="ratingUp(post)" id="thumbs-up" class="glyphicon glyphicon-thumbs-up pointer"></span><span ng-style="{'color':'red'}" ng-click="ratingDown(post)" id="thumbs-down" class="glyphicon glyphicon-thumbs-down pointer"></span><span ng-class="{greenNum:  post.rating > 0 , redNum: post.rating < 0}">{{post.post_score}}</span>
+				 <strong>{{post.title}}  |  </strong><span ng-style="{'color':'green'}" id="thumbs-up" class="glyphicon glyphicon-thumbs-up pointer"></span><span ng-style="{'color':'red'}"  id="thumbs-down" class="glyphicon glyphicon-thumbs-down pointer"></span><span ng-class="{greenNum:  post.rating > 0 , redNum: post.rating < 0}">{{post.post_score}}</span>
 				 </div>
 				<h6 class="text-right">by {{post.username}}</h6>
 				<p class="commentBox">{{post.post_body}}</p>

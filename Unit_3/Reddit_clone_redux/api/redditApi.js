@@ -10,8 +10,8 @@ apiRouter.get('/user/:id', function(req, res, next) {
 });
 
 apiRouter.get('/posts', function(req, res, next) {
-	knex('posts')
-	.innerJoin('users', 'posts.user_id', 'users.id')
+	knex('users')
+	.innerJoin('posts', 'users.id', 'posts.user_id')
 	.then(function(data){
 	    	res.json({data});
 	});
@@ -42,11 +42,17 @@ apiRouter.post('/comments', function(req, res, next) {
 	    	 comment_time: new Date(),
 	    	 comment_score: 0
 	    })
-	    .then(function(){
-	    	res.redirect('/#/user/' + req.body.userId);
-	    });
 });
 
+apiRouter.put('/posts/:id', function(req, res, next) {	
+	knex('posts')
+	.where({id:req.body.id})
+	.increment('post_score', 1)
+	.returning('post_score')
+	.then(function(score){
+		res.json({score:score[0]});
+	});
+});
 
 
 module.exports = apiRouter;
