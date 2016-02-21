@@ -17,6 +17,16 @@ apiRouter.get('/posts', function(req, res, next) {
 	});
 });
 
+apiRouter.get('/comments', function(req, res, next) {
+	knex('comments')
+	    .where({post_id: req.query.post_id})
+	    .pluck('comment_body')
+	    .then(function(comments){
+	    	res.json({comments:comments});
+	    })
+});
+
+
 apiRouter.post('/posts', function(req, res, next) {
 	knex('posts')
 	    .insert(
@@ -35,14 +45,17 @@ apiRouter.post('/posts', function(req, res, next) {
 
 apiRouter.post('/comments', function(req, res, next) {
 	knex('comments')
-	    .insert(
-	    	{user_id: req.body.userId,
-	    	 post_id: req.body.postId.id,
-	    	 comment_body:req.body.comment,
-	    	 comment_time: new Date(),
-	    	 comment_score: 0
+	    .insert({user_id: req.body.userId,
+	    	    post_id: req.body.postId,
+	    	    comment_body:req.body.comment,
+	    	    comment_time: new Date(),
+	    	    comment_score: 0})
+	    .then(function(){
+	    	console.log("saved");
 	    })
 });
+
+
 
 apiRouter.put('/posts/:id', function(req, res, next) {
 	if(req.body.stat === 'up'){

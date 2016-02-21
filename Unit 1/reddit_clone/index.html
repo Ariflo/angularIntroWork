@@ -72,8 +72,8 @@
 				<p class="commentBox">{{post.comment}}</p>
 				<p class="noselect"><span class="glyphicon glyphicon-calendar"></span> {{post.date | amCalendar}}
 				| <span ng-click="toggleComments(post)" class="pointer"><span class="glyphicon glyphicon-comment"></span><ng-pluralize count="post.comments.length"
-                	 when="{'one': ' {} Comment',
-               		      'other': ' {} Comments'}">
+                	                        when="{'one': ' {} Comment',
+               		            'other': ' {} Comments'}">
 				</ng-pluralize>
 				</span>
 				| <span ng-click="toggleNewComment(post)" class="pointer"> <span class="glyphicon glyphicon-pencil"></span> New Comment</span></p>

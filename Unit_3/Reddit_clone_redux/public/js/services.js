@@ -15,5 +15,5 @@ redditApp.service('Postit', ["$resource", function ($resource) {
 }]);
 
 redditApp.service('Comment', ["$resource", function ($resource) {
-    return $resource('/api/comments', {comment_time: "@comment_time"});
+    return $resource('/api/comments');
 }]);

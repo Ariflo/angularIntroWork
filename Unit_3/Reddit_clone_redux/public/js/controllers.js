@@ -13,13 +13,24 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 	Post.get(function(posts){
 		$scope.show = true;
 		$scope.posts = posts.data;
+
+		for(var i = 0; i<$scope.posts.length; i++ ){
+
+			Comment.get({post_id: $scope.posts[i].id}, function(comments){
+				$scope.comments = comments.comments;
+			})	
+		}
 	});
 
+
     	$scope.postSubmit = function(form){
-		$scope.show = true;
 		if (form.$valid) {
 				$scope.newPostData.userId = $scope.user.id;
-				Post.save($scope.newPostData, function(data){
+				$scope.newPostData.addComment = {}; 
+				$scope.newPostData.commentOn = false; 
+				$scope.newPostData.newCommentOn = false;
+
+				Post.save($scope.newPostData, function(){
 					$scope.postid = data;
 				});
 
@@ -28,17 +39,14 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 	};
 
 	$scope.postComment = function(form, post){
-		$scope.show = true;
+
 		if (form.$valid) {
-			post.comments.push(post.addComment);
-
 			post.addComment.userId = $scope.user.id;
-			post.addComment.postId = $scope.postid;
-			Comment.save(post.addComment);
+			post.addComment.postId = post.id;
 
+			Comment.save(post.addComment);
 			post.addComment = {};
-			
-		};
+		};		
 	
 		$scope.newPostData = {};
 	}
