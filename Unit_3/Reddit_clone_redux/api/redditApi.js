@@ -9,6 +9,15 @@ apiRouter.get('/user/:id', function(req, res, next) {
 	});
 });
 
+apiRouter.get('/posts', function(req, res, next) {
+	knex.from('users')
+	.innerJoin('posts', 'users.id', 'posts.user_id')
+	.select('post.user_id as username')
+	.then(function(data){
+	    	res.json({data});
+	});
+});
+
 apiRouter.post('/posts', function(req, res, next) {
 	knex('posts')
 	    .insert(
@@ -38,5 +47,7 @@ apiRouter.post('/comments', function(req, res, next) {
 	    	res.redirect('/#/user/' + req.body.userId);
 	    });
 });
+
+
 
 module.exports = apiRouter;

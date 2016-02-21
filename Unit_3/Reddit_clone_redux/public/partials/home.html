@@ -34,32 +34,22 @@
 	<div class="container" ng-repeat = "post in posts | filter:searchText | orderBy: currentOrderBy">
 		<div class="row">
 			<div class = "col-xs-2" >
-				<img class="ico" src="{{post.image}}">
+				<img class="ico" src="{{post.img_url}}">
 			</div>
 			
 			<div class="col-xs-10">
 				 <div class="titleThumb noselect">
-				 <strong>{{post.title}}  |  </strong><span ng-style="{'color':'green'}" ng-click="ratingUp(post)" id="thumbs-up" class="glyphicon glyphicon-thumbs-up pointer"></span><span ng-style="{'color':'red'}" ng-click="ratingDown(post)" id="thumbs-down" class="glyphicon glyphicon-thumbs-down pointer"></span><span ng-class="{greenNum:  post.rating > 0 , redNum: post.rating < 0}">{{post.rating}}</span>
+				 <strong>{{post.title}}  |  </strong><span ng-style="{'color':'green'}" ng-click="ratingUp(post)" id="thumbs-up" class="glyphicon glyphicon-thumbs-up pointer"></span><span ng-style="{'color':'red'}" ng-click="ratingDown(post)" id="thumbs-down" class="glyphicon glyphicon-thumbs-down pointer"></span><span ng-class="{greenNum:  post.rating > 0 , redNum: post.rating < 0}">{{post.post_score}}</span>
 				 </div>
 				<h6 class="text-right">by {{post.author}}</h6>
-				<p class="commentBox">{{post.comment}}</p>
-				<p class="noselect"><span class="glyphicon glyphicon-calendar"></span> {{post.date | amCalendar}}
+				<p class="commentBox">{{post.post_body}}</p>
+				<p class="noselect"><span class="glyphicon glyphicon-calendar"></span> {{post.post_time | amCalendar}}
 				| <span ng-click="toggleComments(post)" class="pointer"><span class="glyphicon glyphicon-comment"></span><ng-pluralize count="post.comments.length"
                 	 	     when="{'one': ' {} Comment',
                		      'other': ' {} Comments'}">
 				</ng-pluralize>
 				</span>
-				| <span ng-click="toggleNewComment(post)" class="pointer"> <span class="glyphicon glyphicon-pencil"></span> New Comment</span></p>
 			</div>
-		</div>
-		
-		<div class="newComment">
-			<form name="newComment" ng-submit="postComment(newComment, post)" ng-show="post.newCommentOn===true">
-				<label><b>Name:</b></label>
-				<input type="text" name="author" ng-model="post.addComment.author" placeholder="Your Name" required>
-				<label><b>Comment:</b></label> <input type="text" name="comment" ng-model="post.addComment.comment" placeholder="Write a comment here.." required>
-				<input type="submit">
-			</form>
 		</div>
 
 		<div ng-repeat="comment in post.comments">
