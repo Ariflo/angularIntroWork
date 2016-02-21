@@ -10,9 +10,8 @@ apiRouter.get('/user/:id', function(req, res, next) {
 });
 
 apiRouter.get('/posts', function(req, res, next) {
-	knex.from('users')
-	.innerJoin('posts', 'users.id', 'posts.user_id')
-	.select('post.user_id as username')
+	knex('posts')
+	.innerJoin('users', 'posts.user_id', 'users.id')
 	.then(function(data){
 	    	res.json({data});
 	});

@@ -11,8 +11,7 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 	});	
 
 	Post.get(function(posts){
-		console.log(posts);
-		$scope.posts = posts.posts;
+		$scope.posts = posts.data;
 	});
 
     	$scope.postSubmit = function(form){
