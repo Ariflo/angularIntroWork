@@ -44,14 +44,26 @@ apiRouter.post('/comments', function(req, res, next) {
 	    })
 });
 
-apiRouter.put('/posts/:id', function(req, res, next) {	
-	knex('posts')
-	.where({id:req.body.id})
-	.increment('post_score', 1)
-	.returning('post_score')
-	.then(function(score){
-		res.json({score:score[0]});
-	});
+apiRouter.put('/posts/:id', function(req, res, next) {
+	if(req.body.stat === 'up'){
+		knex('posts')
+		.where({id:req.body.id})
+		.increment('post_score', 1)
+		.returning('post_score')
+		.then(function(score){
+			res.json({score:score[0]});
+		});	
+	}else{
+		knex('posts')
+		.where({id:req.body.id})
+		.decrement('post_score', 1)
+		.returning('post_score')
+		.then(function(score){
+			res.json({score:score[0]});
+		});
+
+	}	
+
 });
 
 

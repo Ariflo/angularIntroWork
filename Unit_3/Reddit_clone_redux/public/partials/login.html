@@ -16,7 +16,7 @@
         </div>
       </form>
           <select id="sortBy"  ng-model="currentOrderBy">
-            <option value="-rating">Sort by Votes</option>
+            <option value="-post_score">Sort by Votes</option>
             <option value="date">Sort by Date</option>
             <option value="title">Sort by Title</option>
           </select>
@@ -57,14 +57,14 @@
 			<div class="col-xs-10">
 
 				 <div class="titleThumb noselect">
-				 <strong>{{post.title}}  |  </strong><span ng-style="{'color':'green'}" ng-click="ratingUp(post)" id="thumbs-up" class="glyphicon glyphicon-thumbs-up pointer"></span><span ng-style="{'color':'red'}" ng-click="ratingDown(post)" id="thumbs-down" class="glyphicon glyphicon-thumbs-down pointer"></span><span ng-class="{greenNum:  post.rating > 0 , redNum: post.rating < 0}">{{post.post_score}}</span>
+				 <strong>{{post.title}}  |  </strong><span ng-style="{'color':'green'}" ng-click="ratingUp(post)" id="thumbs-up" class="glyphicon glyphicon-thumbs-up pointer"></span><span ng-style="{'color':'red'}" ng-click="ratingDown(post)" id="thumbs-down" class="glyphicon glyphicon-thumbs-down pointer"></span><span ng-class="{greenNum:  post.post_score > 0 , redNum: post.post_score < 0}">{{post.post_score}}</span>
 				 </div>
 				<h6 class="text-right">by {{post.username}}</h6>
 				<p class="commentBox">{{post.post_body}}</p>
 				<p class="noselect"><span class="glyphicon glyphicon-calendar"></span> {{post.post_time | amCalendar}}
 				| <span ng-click="toggleComments(post)" class="pointer"><span class="glyphicon glyphicon-comment"></span><ng-pluralize count="post.comments.length"
-                	 	     when="{'one': ' {} Comment',
-               		      'other': ' {} Comments'}">
+                	 	            when="{'one': ' {} Comment',
+               		            'other': ' {} Comments'}">
 				</ng-pluralize>
 				</span>
 				| <span ng-click="toggleNewComment(post)" class="pointer"> <span class="glyphicon glyphicon-pencil"></span> New Comment</span></p>

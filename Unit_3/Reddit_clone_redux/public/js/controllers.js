@@ -44,7 +44,7 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 	}
 	
 	$scope.ratingUp = function(post){
-		Postit.update({id:post.id}, function(data){
+		Postit.update({id:post.id, stat: 'up'}, function(data){
 			post.post_score = data.score;
 		});
 	}
