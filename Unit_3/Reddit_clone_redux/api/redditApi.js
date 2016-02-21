@@ -51,7 +51,7 @@ apiRouter.post('/comments', function(req, res, next) {
 	    	    comment_time: new Date(),
 	    	    comment_score: 0})
 	    .then(function(){
-	    	console.log("saved");
+	    	res.send("saved");
 	    })
 });
 
