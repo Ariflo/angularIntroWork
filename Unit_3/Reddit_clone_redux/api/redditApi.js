@@ -19,8 +19,6 @@ apiRouter.get('/posts', function(req, res, next) {
 
 apiRouter.get('/comments', function(req, res, next) {
 	knex('comments')
-	    .where({post_id: req.query.post_id})
-	    .pluck('comment_body')
 	    .then(function(comments){
 	    	res.json({comments:comments});
 	    })

@@ -1,8 +1,10 @@
 redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location', '$routeParams', 'User', 'Post' , 'Comment' ,'Postit',
 	                                     function($scope,  $http,  $parse,  $location,   $routeParams,   User,  Post, Comment, Postit) {
 	$scope.newPostData = {};
+	$scope.comments = [];
 	$scope.show = false;
 	$scope.reveal = false;
+
 
 	User.get({id: $routeParams.id}, function(user){
 		$scope.user = user;
@@ -14,12 +16,18 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 		$scope.show = true;
 		$scope.posts = posts.data;
 
-		for(var i = 0; i<$scope.posts.length; i++ ){
+		Comment.get(function(comments){
+			$scope.commentsData = comments.comments;
 
-			Comment.get({post_id: $scope.posts[i].id}, function(comments){
-				$scope.comments = comments.comments;
-			})	
-		}
+			for(var i = 0; i<$scope.posts.length; i++){
+				for(var j = i; j<$scope.commentsData.length; j++){
+
+					if($scope.posts[i].id === $scope.commentsData[j].post_id){
+						$scope.comments.push($scope.commentsData[i].comment_body); 
+					}
+				}	
+			}
+		})		
 	});
 
 

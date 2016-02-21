@@ -82,7 +82,7 @@
 
 		</div>
 
-		<div ng-repeat="comment in comments">
-			<div ng-show="post.commentOn===true" class="comment"><b>{{user.username}}:</b> {{comment}}</div>
+		<div ng-repeat="comment in comments track by $index">
+			<div  ng-show="post.commentOn===true" class="comment"><b>{{user.username}}:</b> {{comment}}</div>
 		</div>
 	</div>
