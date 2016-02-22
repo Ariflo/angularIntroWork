@@ -1,7 +1,6 @@
 redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location', '$routeParams', 'User', 'Post' , 'Comment' ,'Postit',
 	                                     function($scope,  $http,  $parse,  $location,   $routeParams,   User,  Post, Comment, Postit) {
 	$scope.newPostData = {};
-	$scope.comments = [];
 	$scope.show = false;
 	$scope.reveal = false;
 
@@ -14,21 +13,27 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 
 	Post.get(function(posts){
 		$scope.show = true;
-		$scope.posts = posts.data;
-
-		Comment.get(function(comments){
-			$scope.commentsData = comments.comments;
-
-			for(var i = 0; i<$scope.posts.length; i++){
-				for(var j = i; j<$scope.commentsData.length; j++){
-
-					if($scope.posts[i].id === $scope.commentsData[j].post_id){
-						$scope.comments.push($scope.commentsData[i].comment_body); 
-					}
-				}	
-			}
-		})		
+		$scope.posts = posts.data;	
 	});
+
+	Comment.get(function(comments){
+		$scope.comments= comments.comments;
+		//console.log($scope.comments);
+	});	
+
+	$scope.login = function() {
+	    $http({
+	        method: "POST",
+	        url: "/api/login",
+	        data: $scope.user
+	    }).then(function(data) {
+	        // Save the JWT to localStorage so we can use it later
+	        localStorage.setItem('jwt', data.data.jwt);
+	    }).catch(function(err){
+	        console.log(err);
+	        console.log("BAD THING ^^^");
+	    });
+	}
 
 
     	$scope.postSubmit = function(form){
@@ -47,7 +52,6 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 	};
 
 	$scope.postComment = function(form, post){
-
 		if (form.$valid) {
 			post.addComment.userId = $scope.user.id;
 			post.addComment.postId = post.id;

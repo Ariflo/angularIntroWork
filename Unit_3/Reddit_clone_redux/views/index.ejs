@@ -61,7 +61,7 @@
         <h4 class="modal-title" id="myModalLabel">Welcome to Redditer</h4>
         <h6 class="modal-title" id="myModalLabel2">Please Sign-in below</h6>
       </div>
-        <form id="signupForm" action="/user" method="GET">
+        <form id="signupForm" action="/user" method="GET" ng-submit="login()">
       <div class="modal-body">
             <label>Username</label>
             <input id="username" class="form-control" type="text" name="username" placeholder="Username" required>             

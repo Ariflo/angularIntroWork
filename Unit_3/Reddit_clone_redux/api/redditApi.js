@@ -2,6 +2,7 @@ var express = require('express');
 var apiRouter = express.Router();
 var knex = require('../db/knex');
 var locus = require('locus');
+var bcrypt = require('bcrypt');
 
 apiRouter.get('/user/:id', function(req, res, next) {
 	knex('users').where({id:req.params.id}).first().then(function(user) {
@@ -19,9 +20,44 @@ apiRouter.get('/posts', function(req, res, next) {
 
 apiRouter.get('/comments', function(req, res, next) {
 	knex('comments')
-	    .then(function(comments){
-	    	res.json({comments:comments});
-	    })
+	.innerJoin('posts', 'comments.post_id', 'posts.id')
+	.then(function(comments){
+	    	res.json({comments});
+	})
+});
+
+apiRouter.post('/api/login', function(req, res) {
+knex('users')
+.where({username: req.body.username})
+.first()
+.then(function(user){
+            if(user){
+                  var pass = req.body.password;
+                  bcrypt.compare(pass, user.password, function(err, result){
+                  	// We sign enough information to determine if 
+                  	// the user is valid in the future. 
+                  	// In our case, username and password are required
+                  	var token = jwt.sign({ username: user.username,
+		                  	           password: user.password
+		                  	         }, "VERY SECRET");
+                  	// On success, we send the token back
+                  	// to the browser.
+                  	res.json({jwt:token});
+                  })
+        }
+        else {
+            res.json({
+                error: JSON.stringify(err),
+                message: "no matching user/pass combo"
+            });
+        }
+    }).catch(function(err){
+        console.log(err);
+        res.json({
+            error: JSON.stringify(err),
+            message: "Error connecting to Database"
+        })
+    });
 });
 
 

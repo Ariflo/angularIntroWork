@@ -67,8 +67,7 @@
                		            'other': ' {} Comments'}">
 				</ng-pluralize>
 				</span>
-				| <span ng-click="toggleNewComment(post)" class="pointer"> <span class="glyphicon glyphicon-pencil"></span> New Comment</span></p>
-				
+				| <span ng-click="toggleNewComment(post)" class="pointer"> <span class="glyphicon glyphicon-pencil"></span>New Comment</span></p>
 			</div>
 		</div>
 		
@@ -82,7 +81,7 @@
 
 		</div>
 
-		<div ng-repeat="comment in comments track by $index">
+		<div ng-repeat="comment in comments track by $index" >
 			<div  ng-show="post.commentOn===true" class="comment"><b>{{user.username}}:</b> {{comment}}</div>
 		</div>
 	</div>
