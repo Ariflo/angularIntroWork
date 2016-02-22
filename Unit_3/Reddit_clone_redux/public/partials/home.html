@@ -21,13 +21,69 @@
             <option value="title">Sort by Title</option>
           </select>
                 <div class="nav navbar-nav navbar-right">
-                    <a class="navbar-brand" data-toggle="modal" href="#"  data-target="#signUpModal">Sign-Up</a>
-                <a class="navbar-brand" data-toggle="modal" href="#"  data-target="#signInModal">Sign-In</a>
+                    <a class="navbar-brand" ng-click="toggleModal()">Sign-Up</a>
+                <a class="navbar-brand" ng-click="toggleModal2()" >Sign-In</a>
               </div>
     </div><!-- /.navbar-collapse -->
 
   </div><!-- /.container-fluid -->
 </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Welcome to Redditer</h4>
+        <h6 class="modal-title" id="myModalLabel2">Please enter your information below</h6>
+      </div>
+
+        <form id="signupForm" action="/new" method="POST">
+      <div class="modal-body">
+            <label>Username</label>
+            <input id="name" class="form-control" type="text" name="username" placeholder="Name" required>
+
+            <label>Password</label>
+            <input id="password" class="form-control" type="password" name="password" placeholder="Password"  required>
+
+            <label>Password Confirmation</label>
+            <input id="pwConfirm" class="form-control" type="password" name="pwConfirm" placeholder="Password confirm" required>   
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <input  id="signUpSubmitBtn" class="btn btn-primary" type="submit" value="Submit">
+      </div>
+        </form> 
+        
+    </div>
+  </div>
+</div> 
+
+ <!-- Modal -->
+<div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Welcome to Redditer</h4>
+        <h6 class="modal-title" id="myModalLabel2">Please Sign-in below</h6>
+      </div>
+        <form name="signinForm" ng-submit='login(signinForm)' action="/user" method="GET">
+      <div class="modal-body">
+            <label>Username</label>
+            <input id="username" class="form-control" type="text" name="username" placeholder="Username" required>             
+            <label>Password</label>
+            <input id="password" class="form-control" type="password" name="password" placeholder="Password" required>
+      </div>
+      <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <input id="signInSubmitBtn" class="btn btn-primary" type="submit" value="Submit">
+      </div>
+        </form> 
+    </div>
+  </div>
+</div>
 
 <h1>Welcome {{user.username}}</h1>
 	

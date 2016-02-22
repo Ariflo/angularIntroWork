@@ -27,22 +27,7 @@ router.post('/new', function(req, res, next) {
 });
 
 router.get('/user', function(req, res, next) {
-  	knex('users').where({username: req.query.username}).first().then(function(user){
-                  if(user){
-                        var pass = req.query.password;
-                        bcrypt.compare(pass, user.password, function(err, result){
-                                        if(result){
-                                          req.session.id = user.id; 
-                                          req.session.name = user.username;
-                                          res.redirect('/#/user/'+ user.id); 
-                                        }else{
-                                          res.redirect('/#/new/sign-in-error'); 
-                                        }
-                                });
-                  }else{
-                        res.redirect('/#/new/sign-in-error');
-                  }
-      });
+              res.redirect('/'); 
 });
 
 

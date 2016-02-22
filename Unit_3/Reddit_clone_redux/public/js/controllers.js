@@ -3,7 +3,11 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 	$scope.newPostData = {};
 	$scope.show = false;
 	$scope.reveal = false;
-
+	$scope.showModal = false;
+	
+	$scope.toggleModal = function(){
+	        $scope.showModal = !$scope.showModal;
+	};
 
 	User.get({id: $routeParams.id}, function(user){
 		$scope.user = user;
