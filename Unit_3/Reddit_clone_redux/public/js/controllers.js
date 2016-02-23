@@ -3,17 +3,16 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 	$scope.newPostData = {};
 	$scope.show = false;
 	$scope.reveal = false;
-	$scope.showModal = false;
+	$scope.user = {};
 	
 	$scope.toggleModal = function(){
 	        $scope.showModal = !$scope.showModal;
+	};	
+
+	$scope.toggleSignInModal = function(){
+	        $scope.showSignInModal = !$scope.showSignInModal;
 	};
 
-	User.get({id: $routeParams.id}, function(user){
-		$scope.user = user;
-		}, function(err){ 
-		console.log(err);
-	});	
 
 	Post.get(function(posts){
 		$scope.show = true;
@@ -25,18 +24,42 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 		//console.log($scope.comments);
 	});	
 
+	$scope.signup = function() {
+			$http({
+				method: "POST",
+				url: "/api/users",
+				data: $scope.user
+			}).then(function(data) {
+				// Save the JWT to localStorage so we can use it later
+				localStorage.setItem('jwt', data.data.jwt);
+				$scope.user.id = data.data.id
+			}).catch(function(err){
+				console.log(err);
+				console.log("BAD THING ^^^");
+			});
+	}
+
 	$scope.login = function() {
-	    $http({
-	        method: "POST",
-	        url: "/api/login",
-	        data: $scope.user
-	    }).then(function(data) {
-	        // Save the JWT to localStorage so we can use it later
-	        localStorage.setItem('jwt', data.data.jwt);
-	    }).catch(function(err){
-	        console.log(err);
-	        console.log("BAD THING ^^^");
-	    });
+			$http({
+				method: "POST",
+				url: "/api/login",
+				data: $scope.user
+			}).then(function(data) {
+				// Save the JWT to localStorage so we can use it later
+				localStorage.setItem('jwt', data.data.jwt);
+			}).catch(function(err){
+				console.log(err);
+				console.log("BAD THING ^^^");
+			});
+	}
+
+	$scope.signedIn = function(){
+		$scope.showModal = false;
+		$scope.showSignInModal = false;
+	}
+
+	$scope.logout = function() {
+					localStorage.removeItem('jwt');
 	}
 
 
