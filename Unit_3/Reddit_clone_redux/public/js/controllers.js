@@ -59,8 +59,12 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 	}
 
 	$scope.logout = function() {
-					localStorage.removeItem('jwt');
+		localStorage.removeItem('jwt');
 	}
+
+	$scope.isAuthenticated = function() {
+	  return localStorage.getItem("jwt");
+	};
 
 
     	$scope.postSubmit = function(form){

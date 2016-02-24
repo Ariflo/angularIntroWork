@@ -21,8 +21,9 @@
             <option value="title">Sort by Title</option>
           </select>
                 <div class="nav navbar-nav navbar-right">
-                <a class="navbar-brand" ng-click="toggleModal()">Sign-Up</a>
-                <a class="navbar-brand" ng-click="toggleSignInModal()">Sign-In</a>
+                <a ng-if="!isAuthenticated" class="navbar-brand" ng-click="toggleModal()">Sign-Up</a>
+                <a ng-if="!isAuthenticated" class="navbar-brand" ng-click="toggleSignInModal()">Sign-In</a>
+                <a ng-if="!isAuthenticated"  class="navbar-brand" ng-click="logout()" >Sign-Out</a>
               </div>
     </div><!-- /.navbar-collapse -->
 
@@ -67,6 +68,23 @@
 </modal>
 
 <h1>Welcome {{user.username}}</h1>
+<a ng-click="showStuff()" ng-if="!isAuthenticated" >Post<span class="glyphicon glyphicon-plus"></span></a>
+
+<form  ng-if="!isAuthenticated"  name="postForm" ng-submit="postSubmit(postForm)" class="slide"> 
+
+  <div class="form-group">
+            <label>Title</label>
+        <input type="text" ng-model="newPostData.title" name="title" class="form-control" id="name" placeholder="Name" required>       
+
+        <label>Image</label>
+        <input type="url" ng-model="newPostData.image" name="image" class="form-control" id="image" placeholder="http://jpg.com.jpg"required> 
+
+        <label>Post Text</label>
+        <input type="text" ng-model="newPostData.post_body" name="post"  class="form-control" id="comment" placeholder="Place text here..." required><br>
+  <input type="submit" class="btn btn-success"  value="POST">
+  </div>
+
+</form>
 	
 	<div class="container" ng-repeat = "post in posts | filter:searchText | orderBy: currentOrderBy">
 		<div class="row">

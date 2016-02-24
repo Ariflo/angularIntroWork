@@ -57,7 +57,9 @@
 			<div class="col-xs-10">
 
 				 <div class="titleThumb noselect">
+				 *************NG-CLICK rating only when logged in 
 				 <strong>{{post.title}}  |  </strong><span ng-style="{'color':'green'}" ng-click="ratingUp(post)" id="thumbs-up" class="glyphicon glyphicon-thumbs-up pointer"></span><span ng-style="{'color':'red'}" ng-click="ratingDown(post)" id="thumbs-down" class="glyphicon glyphicon-thumbs-down pointer"></span><span ng-class="{greenNum:  post.post_score > 0 , redNum: post.post_score < 0}">{{post.post_score}}</span>
+				 ************NG-CLICK rating only when logged in 
 				 </div>
 				<h6 class="text-right">by {{post.username}}</h6>
 				<p class="commentBox">{{post.post_body}}</p>
