@@ -1,6 +1,6 @@
 var redditApp = angular.module('redditApp', ['angularMoment', 'ngRoute', 'ngAnimate', 'ngResource']);
 
-redditApp.config(function($routeProvider, $locationProvider){
+redditApp.config(function($routeProvider, $locationProvider,$httpProvider){
 	$routeProvider
 	.when('/',{
 		templateUrl: 'partials/home.html',
@@ -21,5 +21,7 @@ redditApp.config(function($routeProvider, $locationProvider){
 		templateUrl: 'partials/signInError.html',
         		controller: 'homeController'
 	})
+
+	$httpProvider.interceptors.push('authInterceptor');
 
 });

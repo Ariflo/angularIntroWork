@@ -21,14 +21,13 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 
 	Comment.get(function(comments){
 		$scope.comments= comments.comments;
-		//console.log($scope.comments);
 	});	
 
 	$scope.signup = function() {
 			$http({
 				method: "POST",
-				url: "/api/users",
-				data: $scope.user
+				url: "/users",
+				data: $scope.signUp
 			}).then(function(data) {
 				// Save the JWT to localStorage so we can use it later
 				localStorage.setItem('jwt', data.data.jwt);
@@ -42,7 +41,7 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 	$scope.login = function() {
 			$http({
 				method: "POST",
-				url: "/api/login",
+				url: "/login",
 				data: $scope.user
 			}).then(function(data) {
 				// Save the JWT to localStorage so we can use it later
@@ -62,9 +61,7 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 		localStorage.removeItem('jwt');
 	}
 
-	$scope.isAuthenticated = function() {
-	  return localStorage.getItem("jwt");
-	};
+	$scope.isAuthenticated = false
 
 
     	$scope.postSubmit = function(form){

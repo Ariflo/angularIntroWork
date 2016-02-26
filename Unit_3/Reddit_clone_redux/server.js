@@ -5,8 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
+require('dotenv').config()
 
-var routes = require('./routes/index');
+
 var api = require('./api/redditApi');
 
 var app = express();
@@ -33,8 +34,7 @@ app.use(cookieSession({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/api', api);
+app.use('/', api);
 
 
 // catch 404 and forward to error handler
