@@ -21,9 +21,9 @@
             <option value="title">Sort by Title</option>
           </select>
                 <div class="nav navbar-nav navbar-right">
-                <a ng-if="isAuthenticated" class="navbar-brand" ng-click="toggleModal()">Sign-Up</a>
-                <a ng-if="isAuthenticated" class="navbar-brand" ng-click="toggleSignInModal()">Sign-In</a>
-                <a ng-if="!isAuthenticated"  class="navbar-brand" ng-click="logout()" >Sign-Out</a>
+                <a ng-if="!isAuthenticated" class="navbar-brand" ng-click="toggleModal()">Sign-Up</a>
+                <a ng-if="!isAuthenticated" class="navbar-brand" ng-click="toggleSignInModal()">Sign-In</a>
+                <a ng-if="isAuthenticated"  class="navbar-brand" ng-click="logout()" >Sign-Out</a>
               </div>
     </div><!-- /.navbar-collapse -->
 
