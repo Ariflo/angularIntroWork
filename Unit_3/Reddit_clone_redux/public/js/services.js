@@ -14,10 +14,6 @@ redditApp.service('Postit', ["$resource", function ($resource) {
   	});
 }]);
 
-redditApp.service('Comment', ["$resource", function ($resource) {
-    return $resource('/comments');
-}]);
-
 redditApp.service('authInterceptor', function($window,$location,$q){
 	return {
 		request: function(config){

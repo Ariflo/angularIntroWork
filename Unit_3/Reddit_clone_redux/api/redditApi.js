@@ -21,20 +21,13 @@ apiRouter.get('/user/:id', function(req, res, next) {
 });
 
 apiRouter.get('/posts', function(req, res, next) {
-	knex('users')
-	.innerJoin('posts', 'users.id', 'posts.user_id')
+	knex('posts')
+	.innerJoin('comments', 'posts.id', 'comments.post_id')
 	.then(function(data){
 	    	res.json({data});
 	});
 });
 
-apiRouter.get('/comments', function(req, res, next) {
-	knex('comments')
-	.innerJoin('posts', 'comments.post_id', 'posts.id')
-	.then(function(comments){
-	    	res.json({comments});
-	})
-});
 
 //SIGNUP
 apiRouter.post('/users', function(req, res) {

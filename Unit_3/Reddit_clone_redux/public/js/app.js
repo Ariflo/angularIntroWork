@@ -7,11 +7,6 @@ redditApp.config(function($routeProvider, $locationProvider,$httpProvider){
         		controller: 'homeController'
 	})	
 
-	.when('/user/:id',{
-		templateUrl: 'partials/login.html',
-        		controller: 'homeController'
-	})
-
 	.when('/new/error',{
 		templateUrl: 'partials/userCopyError.html',
         		controller: 'homeController'

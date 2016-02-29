@@ -1,7 +1,6 @@
-redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location', '$routeParams', 'User', 'Post' , 'Comment' ,'Postit',
-	                                     function($scope,  $http,  $parse,  $location,   $routeParams,   User,  Post, Comment, Postit) {
+redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location', '$routeParams', 'User', 'Post' ,'Postit',
+	                                     function($scope,  $http,  $parse,  $location,   $routeParams,   User,  Post, Postit) {
 	$scope.newPostData = {};
-	$scope.show = false;
 	$scope.reveal = false;
 	$scope.isAuthenticated = false;
 	$scope.user = {};
@@ -16,6 +15,7 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 		}).then(function(data) {
 			$scope.user.id = data.data.decoded.id;
 			$scope.user.username = data.data.decoded.username;
+			$scope.isAuthenticated = true;
 
 		}).catch(function(err){
 			console.log(err);
@@ -23,6 +23,15 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 		});
 	}
 	
+
+	Post.get(function(posts){
+		console.log(posts.data);
+		$scope.posts = posts.data;
+	})
+
+	
+
+
 	
 	$scope.toggleModal = function(){
 	        $scope.showModal = !$scope.showModal;
@@ -31,16 +40,7 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 	$scope.toggleSignInModal = function(){
 	        $scope.showSignInModal = !$scope.showSignInModal;
 	};
-
-
-	Post.get(function(posts){
-		$scope.show = true;
-		$scope.posts = posts.data;	
-	});
-
-	Comment.get(function(comments){
-		$scope.comments= comments.comments;
-	});	
+	
 
 	$scope.signup = function() {
 			$http({
@@ -82,6 +82,7 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 	$scope.logout = function() {
 		localStorage.removeItem('jwt');
 		$scope.isAuthenticated = false;
+		$scope.user = {};
 	}
 
 	
@@ -115,25 +116,30 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 	}
 	
 	$scope.ratingUp = function(post){
-		Postit.update({id:post.id, stat: 'up'}, function(data){
+
+		if($scope.isAuthenticated){
+			Postit.update({id:post.id, stat: 'up'}, function(data){
 			post.post_score = data.score;
-		});
+			});
+		}
+		
 	}
 
 	$scope.ratingDown = function(post){
-		Postit.update({id:post.id}, function(data){
+		if($scope.isAuthenticated){
+			Postit.update({id:post.id}, function(data){
 			post.post_score = data.score;
-		});
+			});
+		}
+		
 	}
 
 	$scope.toggleComments = function(post) {
-		post.commentOn= !post.commentOn;
-		post.newCommentOn = false;
+		post.commentOn = !post.commentOn;
 	}
 
 	$scope.toggleNewComment = function(post) {
-		post.newCommentOn= !post.newCommentOn;
-		post.commentOn = false;
+		post.newCommentOn= !post.newCommentOn;	
 	}
 	
 }]);
