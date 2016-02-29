@@ -68,7 +68,6 @@
 </modal>
 
 <h1>Welcome {{user.username}}</h1>
-<a ng-click="showStuff()" ng-if="isAuthenticated" >Post<span class="glyphicon glyphicon-plus"></span></a>
 
 <form  ng-if="isAuthenticated"  name="postForm" ng-submit="postSubmit(postForm)" class="slide"> 
 

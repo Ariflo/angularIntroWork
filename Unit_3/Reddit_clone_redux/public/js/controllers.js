@@ -3,6 +3,7 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 	$scope.newPostData = {};
 	$scope.show = false;
 	$scope.reveal = false;
+	$scope.isAuthenticated = false
 	$scope.user = {};
 	
 	$scope.toggleModal = function(){
@@ -32,6 +33,7 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 				// Save the JWT to localStorage so we can use it later
 				localStorage.setItem('jwt', data.data.jwt);
 				$scope.user.id = data.data.id
+				$scope.isAuthenticated = true;
 			}).catch(function(err){
 				console.log(err);
 				console.log("BAD THING ^^^");
@@ -46,6 +48,8 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 			}).then(function(data) {
 				// Save the JWT to localStorage so we can use it later
 				localStorage.setItem('jwt', data.data.jwt);
+				$scope.user.id = data.data.id
+				$scope.isAuthenticated = true;
 			}).catch(function(err){
 				console.log(err);
 				console.log("BAD THING ^^^");
@@ -61,7 +65,7 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 		localStorage.removeItem('jwt');
 	}
 
-	$scope.isAuthenticated = false
+	
 
 
     	$scope.postSubmit = function(form){
@@ -111,10 +115,6 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 	$scope.toggleNewComment = function(post) {
 		post.newCommentOn= !post.newCommentOn;
 		post.commentOn = false;
-	}
-
-	$scope.showStuff = function(){
-		$scope.reveal = !$scope.reveal; 
 	}
 	
 }]);
