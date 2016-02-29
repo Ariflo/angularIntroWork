@@ -25,13 +25,10 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 	
 
 	Post.get(function(posts){
-		console.log(posts.data);
 		$scope.posts = posts.data;
 	})
 
 	
-
-
 	
 	$scope.toggleModal = function(){
 	        $scope.showModal = !$scope.showModal;
@@ -46,7 +43,7 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 			$http({
 				method: "POST",
 				url: "/users",
-				data: $scope.signUp
+				data: $scope.user
 			}).then(function(data) {
 				// Save the JWT to localStorage so we can use it later
 				localStorage.setItem('jwt', data.data.jwt);

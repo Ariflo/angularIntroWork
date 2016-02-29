@@ -33,20 +33,20 @@ apiRouter.get('/posts', function(req, res, next) {
 apiRouter.post('/users', function(req, res) {
 	knex('users').where({username: req.body.username}).first().then(function(user){
 	  if(user || req.body.password !== req.body.passwordconfirm){
-	    res.json({
-	        error: JSON.stringify(err),
-	        message: "email already in use/passwords do not match"
-	    });
+
+		    res.json({
+		        error: JSON.stringify(err),
+		        message: "email already in use/passwords do not match"
+		    });
 	  }else{
 	    bcrypt.genSalt(10, function(err, salt){
 
 	        bcrypt.hash(req.body.password, salt, function(err, hash){
-
 	        knex('users').insert({username: req.body.username, password: hash}).returning('id').then(function(id){
 	        	// We sign enough information to determine if 
 	            // the user is valid in the future. 
 	            // In our case, username and password are required
-	        	var token = jwt.sign({id: user.id,
+	        	var token = jwt.sign({id: id,
 	        			         username: req.body.username
 		        	                 }, process.env.JWT_SECRET);
 
@@ -109,7 +109,7 @@ apiRouter.post('/login', function(req, res) {
 
 
 
-
+//Posts into DB
 apiRouter.post('/posts', function(req, res, next) {
 	knex('posts')
 	    .insert(
