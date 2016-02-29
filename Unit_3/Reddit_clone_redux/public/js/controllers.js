@@ -3,8 +3,26 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 	$scope.newPostData = {};
 	$scope.show = false;
 	$scope.reveal = false;
-	$scope.isAuthenticated = false
+	$scope.isAuthenticated = false;
 	$scope.user = {};
+
+
+	if(localStorage.getItem('jwt')){
+
+		var  token = localStorage.getItem('jwt');
+		$http({
+			method: "GET",
+			url: "/user/" + token
+		}).then(function(data) {
+			$scope.user.id = data.data.decoded.id;
+			$scope.user.username = data.data.decoded.username;
+
+		}).catch(function(err){
+			console.log(err);
+			console.log("BAD THING ^^^");
+		});
+	}
+	
 	
 	$scope.toggleModal = function(){
 	        $scope.showModal = !$scope.showModal;
@@ -63,6 +81,7 @@ redditApp.controller('homeController', ['$scope', '$http', '$parse', '$location'
 
 	$scope.logout = function() {
 		localStorage.removeItem('jwt');
+		$scope.isAuthenticated = false;
 	}
 
 	

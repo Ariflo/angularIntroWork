@@ -7,18 +7,17 @@ var  jwt = require('jsonwebtoken');
 require('dotenv').config()
 
 apiRouter.get('/', function(req,res,next){
-	res.render('index', {username:'RedditCloneRedux'});
+	res.render('index');
 })
 
 apiRouter.get('/user/:id', function(req, res, next) {
-	knex('users').where({id:req.params.id}).first().then(function(user) {
-		if (req.headers.Authorization) {
-			var token = req.headers.Authorization.split(' ')[1];
-			var decoded = jwt.verify(token, process.env.JWT_SECRET)
-		}
+		if (req.headers.authorization) {
 
-		res.json(user);
-	});
+			var token = req.headers.authorization.split(' ')[1];
+			var decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+			res.json({decoded});
+		}
 });
 
 apiRouter.get('/posts', function(req, res, next) {
@@ -54,12 +53,13 @@ apiRouter.post('/users', function(req, res) {
 	        	// We sign enough information to determine if 
 	            // the user is valid in the future. 
 	            // In our case, username and password are required
-	        	var token = jwt.sign({username: req.body.username
+	        	var token = jwt.sign({id: user.id,
+	        			         username: req.body.username
 		        	                 }, process.env.JWT_SECRET);
 
 	        	// On success, we send the token back
 	        	// to the browser.
-	        	res.json({jwt:token, id:id});
+	        	res.json({jwt:token});
 	        });
 	      });
 	    });
@@ -84,7 +84,8 @@ apiRouter.post('/login', function(req, res) {
 	    				// We sign enough information to determine if
 	    				// the user is valid in the future.
 	    				// In our case, username and password are required
-	    				var token = jwt.sign({username: req.body.username
+	    				var token = jwt.sign({ id: user.id,
+	    					username: req.body.username
 	    				                 }, process.env.JWT_SECRET);
 
 	    				// On success, we send the token back

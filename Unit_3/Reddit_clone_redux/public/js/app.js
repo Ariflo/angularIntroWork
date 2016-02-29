@@ -5,11 +5,6 @@ redditApp.config(function($routeProvider, $locationProvider,$httpProvider){
 	.when('/',{
 		templateUrl: 'partials/home.html',
         		controller: 'homeController'
-        		resolve:{
-        			currentUser: function(UserService) {
-        			     return authInterceptor.request();
-        			 }
-        		}
 	})	
 
 	.when('/user/:id',{
