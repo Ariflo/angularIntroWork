@@ -11,7 +11,6 @@ beforeEach(function () {
 })
 
 describe('the homepage', function(){
-e
 	it("should load", function(done){
 		testSession.get('/')
 		.expect(200)
@@ -24,12 +23,4 @@ e
 		})
 
 	})	
-
-	it("should store users, posts, and comments in a SQL database", function(done){
-		
-
-	})
-
-
-
 })
