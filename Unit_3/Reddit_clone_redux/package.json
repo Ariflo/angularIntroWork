@@ -1,6 +1,6 @@
 {
-  "name": "redditApp",
-  "version": "1.1.1",
+  "name": "angularIntroWork",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "node server.js"
