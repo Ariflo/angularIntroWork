@@ -21,8 +21,8 @@ apiRouter.get('/user/:id', function(req, res, next) {
 });
 
 apiRouter.get('/posts', function(req, res, next) {
-	knex('posts')
-	.innerJoin('comments', 'posts.id', 'comments.post_id')
+	knex('users')
+	.innerJoin('posts', 'users.id', 'posts.user_id')
 	.then(function(data){
 	    	res.json({data});
 	});
