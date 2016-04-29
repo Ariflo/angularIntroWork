@@ -4,7 +4,7 @@
   "description": "angular shopping cart",
   "private": true,
   "scripts": {
-    "start": "node server.js"
+    "start": "node .server.js"
   },
   "engines": {
     "node": "4.2.6"
