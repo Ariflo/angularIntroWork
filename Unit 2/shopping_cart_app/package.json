@@ -1,8 +1,14 @@
 {
   "name": "shopping_cart_app",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "angular shopping cart",
-  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "4.2.6"
+  },
   "dependencies": {
     "body-parser": "^1.14.2",
     "cookie-parser": "^1.4.1",
