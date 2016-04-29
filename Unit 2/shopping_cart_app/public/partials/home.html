@@ -27,7 +27,7 @@
   </tr>
 
   <tr ng-repeat="tea in teas | orderBy: sortByPrice | filter: searchText | filter: category">
-  	 <td class ="imgData"><img src="{{tea.imageUrl}}"></td>
+  	 <td class ="imgData"><img ng-src="{{tea.imageUrl}}"></td>
   	 <td class ="teaData">
 	  	<h4>{{tea.name}}</h4> 
 
